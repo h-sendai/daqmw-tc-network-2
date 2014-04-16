@@ -1,0 +1,16 @@
+syntax: glob
+.depend
+*.o
+*.d
+*~
+autogen
+.confFilePath
+omninames*
+rtc.conf
+RawDataReader/RawDataReaderComp
+RawDataMonitor/RawDataMonitorComp
+RawDataLogger/RawDataLoggerComp
+*.old
+*.0
+*.1
+*.pyc

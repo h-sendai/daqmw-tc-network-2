@@ -196,7 +196,7 @@ int RawDataReader::get_data_length(unsigned char *buf, int buflen)
 {
     unsigned int *length;
     unsigned int rv;
-    length = (unsigned int *)&buf[8];
+    length = (unsigned int *)&buf[4];
     rv  = ntohl(*length);
 
     return rv;

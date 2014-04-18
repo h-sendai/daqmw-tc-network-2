@@ -28,10 +28,14 @@ class WorkerThread(Thread):
     def __init__(self, notify_window, freq):
         Thread.__init__(self)
         self._notify_window = notify_window
+        self.running = False
         self._want_abort = 0
         self._freq = freq
         self.start()
+    def is_running(self):
+        return self.running
     def run(self):
+        self.running = True
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         except socket.error, e:
@@ -51,8 +55,10 @@ class WorkerThread(Thread):
             time.sleep(1/float(self._freq))
             if self._want_abort:
                 wx.PostEvent(self._notify_window, ResultEvent(None))
+                self.running = False
                 return
         wx.PostEvent(self._notify_window, ResultEvent(10))
+        self.running = False
     def abort(self):
         self._want_abort = 1
 
@@ -90,9 +96,14 @@ class Trigger(wx.Frame):
             self.SetStatusText('stop trigger packet')
     
     def OnExit(self, event):
+        #if self.worker:
+        #    self.SetStatusText('Still sending trigger packet.  Please click stop button.')
+        #    return
         if self.worker:
-            self.SetStatusText('Still sending trigger packet.  Please click stop button.')
-            return
+            self.worker.abort()
+        while self.worker != None and self.worker.is_running():
+            time.sleep(0.01)
+            # print 'sleeping'
         self.Close()
     
     def OnResult(self, event):

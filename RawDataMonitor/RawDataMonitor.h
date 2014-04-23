@@ -16,12 +16,11 @@
 
 ////////// ROOT Include files //////////
 #include "TGraph.h"
-#include "TH1.h"
+// #include "TH1.h"
 #include "TCanvas.h"
 #include "TStyle.h"
 #include "TApplication.h"
 
-#include "SampleData.h"
 #include "RawDataPacket.h"
 
 using namespace RTC;
@@ -59,25 +58,17 @@ private:
     int reset_InPort();
 
     unsigned int read_InPort();
-    //int online_analyze();
-    int decode_data(const unsigned char* mydata);
-    int fill_data(const unsigned char* mydata, const int size);
-    //int fill_data(unsigned char* mydata, const int size);
 
     BufferStatus m_in_status;
 
-    ////////// ROOT Histogram //////////
-    TCanvas *m_canvas;
-    TH1F    *m_hist;
-    int      m_bin;
-    double   m_min;
-    double   m_max;
-    int      m_monitor_update_rate;
+    int m_monitor_update_rate;
     const static unsigned int DATA_BUF_SIZE = 1024*1024;
     unsigned char m_recv_data[DATA_BUF_SIZE];
     unsigned int  m_event_byte_size;
-    struct sampleData m_sampleData;
+    int fill_data(const unsigned char* mydata, const int size);
 
+    ////////// ROOT Graph //////////
+    TCanvas *m_canvas;
 	RawDataPacket rdp;
 	TGraph   *m_graph;
     bool m_debug;

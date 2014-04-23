@@ -36,13 +36,9 @@ RawDataMonitor::RawDataMonitor(RTC::Manager* manager)
     : DAQMW::DaqComponentBase(manager),
       m_InPort("rawdatamonitor_in",   m_in_data),
       m_in_status(BUF_SUCCESS),
-      m_canvas(0),
-      m_hist(0),
-      m_bin(0),
-      m_min(0),
-      m_max(0),
       m_monitor_update_rate(30),
       m_event_byte_size(0),
+      m_canvas(0),
 	  m_graph(0),
       m_debug(false)
 {
@@ -133,11 +129,6 @@ int RawDataMonitor::daq_unconfigure()
         m_canvas = 0;
     }
 
-    if (m_hist) {
-        delete m_hist;
-        m_hist = 0;
-    }
-
 	if (m_graph) {
 		delete m_graph;
 		m_graph = 0;
@@ -159,26 +150,6 @@ int RawDataMonitor::daq_start()
     }
     m_canvas = new TCanvas("c1", "histos", 0, 0, 600, 400);
 
-    ////////////////       HISTOS      ///////////////////
-    if (m_hist) {
-        delete m_hist;
-        m_hist = 0;
-    }
-
-    int m_hist_bin = 100;
-    double m_hist_min = 0.0;
-    double m_hist_max = 1000.0;
-
-    gStyle->SetStatW(0.4);
-    gStyle->SetStatH(0.2);
-    gStyle->SetOptStat("em");
-
-    m_hist = new TH1F("hist", "hist", m_hist_bin, m_hist_min, m_hist_max);
-    m_hist->GetXaxis()->SetNdivisions(5);
-    m_hist->GetYaxis()->SetNdivisions(4);
-    m_hist->GetXaxis()->SetLabelSize(0.07);
-    m_hist->GetYaxis()->SetLabelSize(0.06);
-
 	if (m_graph) {
 		delete m_graph;
 		m_graph = 0;
@@ -192,7 +163,6 @@ int RawDataMonitor::daq_stop()
 {
     std::cerr << "*** RawDataMonitor::stop" << std::endl;
 
-    //m_hist->Draw();
 	m_graph->Draw();
     m_canvas->Update();
 
@@ -225,26 +195,6 @@ int RawDataMonitor::reset_InPort()
     return 0;
 }
 
-int RawDataMonitor::decode_data(const unsigned char* mydata)
-{
-    m_sampleData.magic      = mydata[0];
-    m_sampleData.format_ver = mydata[1];
-    m_sampleData.module_num = mydata[2];
-    m_sampleData.reserved   = mydata[3];
-    unsigned int netdata    = *(unsigned int*)&mydata[4];
-    m_sampleData.data       = ntohl(netdata);
-
-    if (m_debug) {
-        std::cerr << "magic: "      << std::hex << (int)m_sampleData.magic      << std::endl;
-        std::cerr << "format_ver: " << std::hex << (int)m_sampleData.format_ver << std::endl;
-        std::cerr << "module_num: " << std::hex << (int)m_sampleData.module_num << std::endl;
-        std::cerr << "reserved: "   << std::hex << (int)m_sampleData.reserved   << std::endl;
-        std::cerr << "data: "       << std::dec << (int)m_sampleData.data       << std::endl;
-    }
-
-    return 0;
-}
-
 int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
 {
 	rdp.set_buf(mydata, size);
@@ -269,15 +219,6 @@ int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
 
 	rdp.reset_buf();
 
-#if 0
-    for (int i = 0; i < size/(int)ONE_EVENT_SIZE; i++) {
-        decode_data(mydata);
-        float fdata = m_sampleData.data/1000.0; // 1000 times value is received
-        m_hist->Fill(fdata);
-
-        mydata+=ONE_EVENT_SIZE;
-    }
-#endif
     return 0;
 }
 
@@ -339,7 +280,6 @@ int RawDataMonitor::daq_run()
 
     unsigned long sequence_num = get_sequence_num();
     if ((sequence_num % m_monitor_update_rate) == 0) {
-        //m_hist->Draw();
 		m_graph->Draw("AC*");
         m_canvas->Update();
     }

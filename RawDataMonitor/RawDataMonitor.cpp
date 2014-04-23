@@ -43,6 +43,7 @@ RawDataMonitor::RawDataMonitor(RTC::Manager* manager)
       m_max(0),
       m_monitor_update_rate(30),
       m_event_byte_size(0),
+	  m_graph(0),
       m_debug(false)
 {
     // Registration: InPort/OutPort/Service
@@ -136,6 +137,12 @@ int RawDataMonitor::daq_unconfigure()
         delete m_hist;
         m_hist = 0;
     }
+
+	if (m_graph) {
+		delete m_graph;
+		m_graph = 0;
+	}
+
     return 0;
 }
 
@@ -172,6 +179,12 @@ int RawDataMonitor::daq_start()
     m_hist->GetXaxis()->SetLabelSize(0.07);
     m_hist->GetYaxis()->SetLabelSize(0.06);
 
+	if (m_graph) {
+		delete m_graph;
+		m_graph = 0;
+	}
+	m_graph = new TGraph();
+
     return 0;
 }
 
@@ -179,7 +192,8 @@ int RawDataMonitor::daq_stop()
 {
     std::cerr << "*** RawDataMonitor::stop" << std::endl;
 
-    m_hist->Draw();
+    //m_hist->Draw();
+	m_graph->Draw();
     m_canvas->Update();
 
     reset_InPort();
@@ -233,6 +247,29 @@ int RawDataMonitor::decode_data(const unsigned char* mydata)
 
 int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
 {
+	rdp.set_buf(mydata, size);
+	int window_size   = rdp.get_window_size();
+	int n_ch          = rdp.get_num_of_ch();
+	int trigger_count = rdp.get_trigger_count();
+	
+	unsigned short data[n_ch][window_size];
+	
+	for (int w = 0; w < window_size; w++) {
+		for (int ch = 0; ch < n_ch; ch ++) {
+			data[ch][w] = rdp.get_data_at(ch, w);
+		}
+	}
+	
+	for (int w = 0; w < window_size; w++) {
+		m_graph->SetPoint(w, w, data[0][w]);
+	}
+	m_graph->SetMinimum(0.0);
+	m_graph->SetMaximum(5000.0);
+	m_graph->SetTitle(Form("Trigger: %d", trigger_count));
+
+	rdp.reset_buf();
+
+#if 0
     for (int i = 0; i < size/(int)ONE_EVENT_SIZE; i++) {
         decode_data(mydata);
         float fdata = m_sampleData.data/1000.0; // 1000 times value is received
@@ -240,6 +277,7 @@ int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
 
         mydata+=ONE_EVENT_SIZE;
     }
+#endif
     return 0;
 }
 
@@ -301,7 +339,8 @@ int RawDataMonitor::daq_run()
 
     unsigned long sequence_num = get_sequence_num();
     if ((sequence_num % m_monitor_update_rate) == 0) {
-        m_hist->Draw();
+        //m_hist->Draw();
+		m_graph->Draw("AC*");
         m_canvas->Update();
     }
     /////////////////////////////////////////////////////////////

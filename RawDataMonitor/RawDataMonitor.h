@@ -15,12 +15,14 @@
 #include <arpa/inet.h> // for ntohl()
 
 ////////// ROOT Include files //////////
+#include "TGraph.h"
 #include "TH1.h"
 #include "TCanvas.h"
 #include "TStyle.h"
 #include "TApplication.h"
 
 #include "SampleData.h"
+#include "RawDataPacket.h"
 
 using namespace RTC;
 
@@ -60,6 +62,7 @@ private:
     //int online_analyze();
     int decode_data(const unsigned char* mydata);
     int fill_data(const unsigned char* mydata, const int size);
+    //int fill_data(unsigned char* mydata, const int size);
 
     BufferStatus m_in_status;
 
@@ -75,6 +78,8 @@ private:
     unsigned int  m_event_byte_size;
     struct sampleData m_sampleData;
 
+	RawDataPacket rdp;
+	TGraph   *m_graph;
     bool m_debug;
 };
 

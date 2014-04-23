@@ -24,6 +24,7 @@ all: $(COMP_NAME)Comp
 
 SRCS += $(COMP_NAME).cpp
 SRCS += $(COMP_NAME)Comp.cpp
+SRCS += RawDataPacket.cpp
 
 CPPFLAGS += -I$(shell ${ROOTSYS}/bin/root-config --incdir)
 LDLIBS   += $(shell ${ROOTSYS}/bin/root-config --glibs)

@@ -39,7 +39,6 @@ RawDataMonitor::RawDataMonitor(RTC::Manager* manager)
       m_monitor_update_rate(30),
       m_event_byte_size(0),
       m_canvas(0),
-	  m_graph(0),
       m_debug(false)
 {
     // Registration: InPort/OutPort/Service
@@ -129,9 +128,11 @@ int RawDataMonitor::daq_unconfigure()
         m_canvas = 0;
     }
 
-	if (m_graph) {
-		delete m_graph;
-		m_graph = 0;
+	for (int i = 0; i < N_GRAPH; i++) {
+		if (m_graph[i]) {
+			delete m_graph[i];
+			m_graph[i] = 0;
+		}
 	}
 
     return 0;
@@ -150,11 +151,21 @@ int RawDataMonitor::daq_start()
     }
     m_canvas = new TCanvas("c1", "histos", 0, 0, 600, 400);
 
-	if (m_graph) {
-		delete m_graph;
-		m_graph = 0;
+	int col, row;
+	row = N_ROW_IN_CANVAS;
+	col = N_GRAPH / row;
+	if (N_GRAPH % row != 0) {
+		col ++;
 	}
-	m_graph = new TGraph();
+	m_canvas->Divide(col, row);
+
+	for (int i = 0; i < N_GRAPH; i++) {
+		if (m_graph[i]) {
+			delete m_graph[i];
+			m_graph[i] = 0;
+		}
+		m_graph[i] = new TGraph();
+	}
 
     return 0;
 }
@@ -163,7 +174,9 @@ int RawDataMonitor::daq_stop()
 {
     std::cerr << "*** RawDataMonitor::stop" << std::endl;
 
-	m_graph->Draw();
+	for (int i = 0; i < N_GRAPH; i++) {
+		m_graph[i]->Draw();
+	}
     m_canvas->Update();
 
     reset_InPort();
@@ -210,12 +223,14 @@ int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
 		}
 	}
 	
-	for (int w = 0; w < window_size; w++) {
-		m_graph->SetPoint(w, w, data[0][w]);
+	for (int i = 0; i < N_GRAPH; i++) {
+		for (int w = 0; w < window_size; w++) {
+			m_graph[i]->SetPoint(w, w, data[0][w]);
+		}
+		m_graph[i]->SetMinimum(0.0);
+		m_graph[i]->SetMaximum(5000.0);
+		m_graph[i]->SetTitle(Form("CH: %d Trigger: %d", i, trigger_count));
 	}
-	m_graph->SetMinimum(0.0);
-	m_graph->SetMaximum(5000.0);
-	m_graph->SetTitle(Form("Trigger: %d", trigger_count));
 
 	rdp.reset_buf();
 
@@ -280,7 +295,10 @@ int RawDataMonitor::daq_run()
 
     unsigned long sequence_num = get_sequence_num();
     if ((sequence_num % m_monitor_update_rate) == 0) {
-		m_graph->Draw("AC*");
+		for (int i = 0; i < N_GRAPH; i++) {
+			m_canvas->cd(i + 1);
+			m_graph[i]->Draw("AC*");
+		}
         m_canvas->Update();
     }
     /////////////////////////////////////////////////////////////

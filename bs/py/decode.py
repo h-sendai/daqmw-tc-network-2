@@ -48,7 +48,7 @@ def main():
             fmt = '>%dH' % (n_ch)
             d = struct.unpack(fmt, data)
             for v in d:
-                print 'trg:', trigger_count, 'ch:', (v & 0xf000) >> 12, 'data:', v & 0x0fff
+                print 'trg:', trigger_count, 'ch:', (v & 0xf000) >> 12, 'window:', w, 'data:', v & 0x0fff
 
 if __name__ == '__main__':
     main()

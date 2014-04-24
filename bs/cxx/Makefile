@@ -1,6 +1,7 @@
 CC = g++
 PROG = readfile
-CXXFLAGS = -g -O2 -Wall
+CXXFLAGS = -pg -g -O2 -Wall
+LDFLAGS += -pg
 # LDLIBS += -L/usr/local/lib/ -lmylib
 
 OBJS += $(PROG).o

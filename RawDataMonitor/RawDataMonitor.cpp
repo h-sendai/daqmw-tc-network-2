@@ -225,7 +225,7 @@ int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
 	
 	for (int i = 0; i < N_GRAPH; i++) {
 		for (int w = 0; w < window_size; w++) {
-			m_graph[i]->SetPoint(w, w, data[0][w]);
+			m_graph[i]->SetPoint(w, w, data[i][w]);
 		}
 		m_graph[i]->SetMinimum(0.0);
 		m_graph[i]->SetMaximum(5000.0);

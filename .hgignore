@@ -10,6 +10,7 @@ rtc.conf
 RawDataReader/RawDataReaderComp
 RawDataMonitor/RawDataMonitorComp
 RawDataLogger/RawDataLoggerComp
+Dispatcher/DispatcherComp
 *.old
 *.0
 *.1

@@ -5,3 +5,8 @@ Dispatcher/DispatcherComp
 RawDataLogger/RawDataLoggerComp
 RawDataMonitor/RawDataMonitorComp
 RawDataReader/RawDataReaderComp
+.confFilePath
+omninames-colors.kek.jp.bak
+omninames-colors.kek.jp.log
+rtc.conf
+rtc*.log

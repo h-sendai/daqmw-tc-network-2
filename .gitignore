@@ -1,0 +1,7 @@
+*.[oa]
+.depend
+autogen
+Dispatcher/DispatcherComp
+RawDataLogger/RawDataLoggerComp
+RawDataMonitor/RawDataMonitorComp
+RawDataReader/RawDataReaderComp

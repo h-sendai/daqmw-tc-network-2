@@ -51,9 +51,7 @@ int main(int argc, char *argv[])
             exit(1);
         }
         int data_length   = r.get_data_length();
-#if 0
         cout << "data_length:   " << data_length   << endl;
-#endif
         n = fread(&buf[RawDataPacket::HEADER_SIZE], 1, data_length, fp);
         if (n == 0) {
             if (feof(fp)) {
@@ -70,20 +68,16 @@ int main(int argc, char *argv[])
         int window_size   = r.get_window_size();
         int trigger_count = r.get_trigger_count();
         int n_ch          = r.get_num_of_ch();
-#if 0
         cout << "window_size:   " << window_size   << endl;
         cout << "trigger_count: " << trigger_count << endl;
-#endif
         
         for (int ch = 0; ch < n_ch; ch ++) {
             for (int w = 0; w < window_size; w++) {
                 unsigned short data = r.get_data_at(ch, w);
-#if 0
                 cout << "ch: "      << ch;
                 cout << " window: " << w;
                 cout << " data: "   << data;
                 cout << endl;
-#endif
             }
         }
         r.reset_buf();

@@ -128,12 +128,12 @@ int RawDataMonitor::daq_unconfigure()
         m_canvas = 0;
     }
 
-	for (int i = 0; i < N_GRAPH; i++) {
-		if (m_graph[i]) {
-			delete m_graph[i];
-			m_graph[i] = 0;
-		}
-	}
+    for (int i = 0; i < N_GRAPH; i++) {
+        if (m_graph[i]) {
+            delete m_graph[i];
+            m_graph[i] = 0;
+        }
+    }
 
     return 0;
 }
@@ -151,21 +151,21 @@ int RawDataMonitor::daq_start()
     }
     m_canvas = new TCanvas("c1", "histos", 0, 0, 600, 400);
 
-	int col, row;
-	row = N_ROW_IN_CANVAS;
-	col = N_GRAPH / row;
-	if (N_GRAPH % row != 0) {
-		col ++;
-	}
-	m_canvas->Divide(col, row);
+    int col, row;
+    row = N_ROW_IN_CANVAS;
+    col = N_GRAPH / row;
+    if (N_GRAPH % row != 0) {
+        col ++;
+    }
+    m_canvas->Divide(col, row);
 
-	for (int i = 0; i < N_GRAPH; i++) {
-		if (m_graph[i]) {
-			delete m_graph[i];
-			m_graph[i] = 0;
-		}
-		m_graph[i] = new TGraph();
-	}
+    for (int i = 0; i < N_GRAPH; i++) {
+        if (m_graph[i]) {
+            delete m_graph[i];
+            m_graph[i] = 0;
+        }
+        m_graph[i] = new TGraph();
+    }
 
     return 0;
 }
@@ -174,9 +174,9 @@ int RawDataMonitor::daq_stop()
 {
     std::cerr << "*** RawDataMonitor::stop" << std::endl;
 
-	for (int i = 0; i < N_GRAPH; i++) {
-		m_graph[i]->Draw();
-	}
+    for (int i = 0; i < N_GRAPH; i++) {
+        m_graph[i]->Draw();
+    }
     m_canvas->Update();
 
     reset_InPort();
@@ -210,29 +210,29 @@ int RawDataMonitor::reset_InPort()
 
 int RawDataMonitor::fill_data(const unsigned char* mydata, const int size)
 {
-	rdp.set_buf(mydata, size);
-	int window_size   = rdp.get_window_size();
-	int n_ch          = rdp.get_num_of_ch();
-	int trigger_count = rdp.get_trigger_count();
-	
-	unsigned short data[n_ch][window_size];
-	
-	for (int w = 0; w < window_size; w++) {
-		for (int ch = 0; ch < n_ch; ch ++) {
-			data[ch][w] = rdp.get_data_at(ch, w);
-		}
-	}
-	
-	for (int i = 0; i < N_GRAPH; i++) {
-		for (int w = 0; w < window_size; w++) {
-			m_graph[i]->SetPoint(w, w, data[i][w]);
-		}
-		m_graph[i]->SetMinimum(0.0);
-		m_graph[i]->SetMaximum(5000.0);
-		m_graph[i]->SetTitle(Form("CH: %d Trigger: %d", i, trigger_count));
-	}
+    rdp.set_buf(mydata, size);
+    int window_size   = rdp.get_window_size();
+    int n_ch          = rdp.get_num_of_ch();
+    int trigger_count = rdp.get_trigger_count();
+    
+    unsigned short data[n_ch][window_size];
+    
+    for (int w = 0; w < window_size; w++) {
+        for (int ch = 0; ch < n_ch; ch ++) {
+            data[ch][w] = rdp.get_data_at(ch, w);
+        }
+    }
+    
+    for (int i = 0; i < N_GRAPH; i++) {
+        for (int w = 0; w < window_size; w++) {
+            m_graph[i]->SetPoint(w, w, data[i][w]);
+        }
+        m_graph[i]->SetMinimum(0.0);
+        m_graph[i]->SetMaximum(5000.0);
+        m_graph[i]->SetTitle(Form("CH: %d Trigger: %d", i, trigger_count));
+    }
 
-	rdp.reset_buf();
+    rdp.reset_buf();
 
     return 0;
 }
@@ -295,10 +295,10 @@ int RawDataMonitor::daq_run()
 
     unsigned long sequence_num = get_sequence_num();
     if ((sequence_num % m_monitor_update_rate) == 0) {
-		for (int i = 0; i < N_GRAPH; i++) {
-			m_canvas->cd(i + 1);
-			m_graph[i]->Draw("AC*");
-		}
+        for (int i = 0; i < N_GRAPH; i++) {
+            m_canvas->cd(i + 1);
+            m_graph[i]->Draw("AC*");
+        }
         m_canvas->Update();
     }
     /////////////////////////////////////////////////////////////

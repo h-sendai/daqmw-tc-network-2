@@ -32,10 +32,10 @@ bool RawDataPacket::is_raw_data_packet()
 
 int RawDataPacket::get_word_size()
 {
-	unsigned char word_size = m_buf[FORMAT_POS];
-	word_size = (word_size & 0x0f);
+    unsigned char word_size = m_buf[FORMAT_POS];
+    word_size = (word_size & 0x0f);
 
-	return word_size;
+    return word_size;
 }
 
 int RawDataPacket::get_data_length()
@@ -67,34 +67,34 @@ int RawDataPacket::get_num_of_ch()
 
 unsigned int RawDataPacket::get_data_at(int ch, int window)
 {
-	// XXX: Assume the word size is 16 bit
-	unsigned short *data;
+    // XXX: Assume the word size is 16 bit
+    unsigned short *data;
 
-	int word_size = get_word_size();
-	int n_ch      = get_num_of_ch();
-	
-	int offset = HEADER_SIZE + n_ch*word_size*window + ch*word_size;
-	data = (unsigned short *)&m_buf[offset];
-	unsigned short rv = ntohs(*data);
-	rv = (rv & 0x0fff);
-	return rv;
+    int word_size = get_word_size();
+    int n_ch      = get_num_of_ch();
+    
+    int offset = HEADER_SIZE + n_ch*word_size*window + ch*word_size;
+    data = (unsigned short *)&m_buf[offset];
+    unsigned short rv = ntohs(*data);
+    rv = (rv & 0x0fff);
+    return rv;
 }
 
 int RawDataPacket::get_window_size()
 {
-	int word_size = get_word_size();
-	int n_ch      = get_num_of_ch();
-	int data_length = get_data_length();
+    int word_size = get_word_size();
+    int n_ch      = get_num_of_ch();
+    int data_length = get_data_length();
 
-	int window_size = data_length / (word_size*n_ch);
+    int window_size = data_length / (word_size*n_ch);
 
-	return window_size;
+    return window_size;
 }
 
 int RawDataPacket::reset_buf()
 {
-	m_buf = NULL;
-	m_buf_len = -1;
-	
-	return 0;
+    m_buf = NULL;
+    m_buf_len = -1;
+    
+    return 0;
 }

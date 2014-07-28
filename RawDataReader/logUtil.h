@@ -10,11 +10,11 @@
 extern int fprintfwt(FILE *pFILE,const char *fmt,...);
 
 /*************************************************************************
-	System : KEK MLF Module Tester.
-	Author : wada@bbtech.co.jp
-	Description : BBT MLF Utilites for Linux
-	$KMM_TESTER_BEGIN_LICENSE$
-	$KMM_TESTER_END_LICENSE$
+    System : KEK MLF Module Tester.
+    Author : wada@bbtech.co.jp
+    Description : BBT MLF Utilites for Linux
+    $KMM_TESTER_BEGIN_LICENSE$
+    $KMM_TESTER_END_LICENSE$
 *************************************************************************/
 
 /****************************************************************

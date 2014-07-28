@@ -68,13 +68,15 @@ int main(int argc, char *argv[])
         int window_size   = r.get_window_size();
         int trigger_count = r.get_trigger_count();
         int n_ch          = r.get_num_of_ch();
-        cout << "window_size:   " << window_size   << endl;
-        cout << "trigger_count: " << trigger_count << endl;
+        
+        //cout << "window_size:   " << window_size   << endl;
+        //cout << "trigger_count: " << trigger_count << endl;
         
         for (int ch = 0; ch < n_ch; ch ++) {
             for (int w = 0; w < window_size; w++) {
                 unsigned short data = r.get_data_at(ch, w);
-                cout << "ch: "      << ch;
+                cout << "trg: "     << trigger_count;
+                cout << " ch: "      << ch;
                 cout << " window: " << w;
                 cout << " data: "   << data;
                 cout << endl;

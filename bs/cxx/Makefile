@@ -1,5 +1,5 @@
 CC = g++
-PROG = readfile
+PROG = read_file_decode
 CXXFLAGS = -g -O2 -Wall
 # LDLIBS += -L/usr/local/lib/ -lmylib
 

@@ -10,5 +10,8 @@ omninames-colors.kek.jp.bak
 omninames-colors.kek.jp.log
 rtc.conf
 rtc*.log
-bs/cxx/read_file_decode
+bs/read_file_decode/read_file_decode
+bs/read_file_decode_graph/read_file_decode_graph
+bs/read_nc_decode/read_nc_decode
+bs/read_nc_decode_graph/read_nc_decode_graph
 bs/fread/fread_sample

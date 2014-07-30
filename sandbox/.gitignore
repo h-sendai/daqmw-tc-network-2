@@ -1,3 +1,5 @@
 *
 !.gitignore
 !README.md
+!ex1
+!ex1/*

@@ -17,5 +17,5 @@ bs/read_nc_decode/read_nc_decode
 bs/read_nc_decode_graph/read_nc_decode_graph
 bs/fread/fread_sample
 bs/byte_order/sample
-template/ex1/sample
-template/ex2/main
+ex/ex1/sample
+ex/ex2/main

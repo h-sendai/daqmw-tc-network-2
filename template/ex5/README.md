@@ -32,3 +32,28 @@ trg: XXX ch: XXX window: XXX data: XXX
     diff -u file_a file_b
 
 違いがなければなにも出力されない。
+
+ファイル
+
+* Makefile
+* RawDataPacket.h     デコードルーチンクラスファイル
+* RawDataPacket.cpp   デコードルーチンクラス実装(各メソッドが書いてないので埋める)
+* read_file_decode.cpp fread()を使ってファイルを読む(このなかでRawDataPacketで実装したメソッドを使っている。main()はこのなかにある)。
+
+実装するメソッド(ヘッダ部)
+
+* is_raw_data_packet()
+* get_word_size()
+* get_data_length()
+* get_num_of_ch()
+* get_window_size()
+
+get_window_size()はデータ長/(ワードサイズ*チャンネル数)で求めたwindow数を返すこと。
+
+データ部
+
+* get_data_at(int ch, int window)
+
+データ部はwindowごとにまとまっていてひとつのチャンネルのデータが連続している
+わけではない。デコードする際にはチャンネルごとのデータがほしいことが多いかと
+思うので、引数にチャンネル番号、windowを指定することにした。

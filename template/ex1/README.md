@@ -2,6 +2,12 @@
 
 実習内容
 
+ファイルをsandbox以下にコピーしてmakeする。
+
+    % cd ..
+    % ls でex1ディレクトリがあることを確認する
+    % cp -r ex1 ../sandbox
+    % cd sandbox/ex1
     % make
 
 確認

@@ -7,7 +7,7 @@
     % cd ..
     % ls でex1ディレクトリがあることを確認する
     % cp -r ex1 ../sandbox
-    % cd sandbox/ex1
+    % cd ../sandbox/ex1
     % make
 
 確認

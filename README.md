@@ -11,26 +11,27 @@ Source code for DAQMW Training Course
 
 ダウンロードすると以下のディレクトリができます。
 
-DAQコンポーネント 
+* daqmw
 
-* RawDataReader
-* RawDataMonitor
-* RawDataLogger
-* Dispatcher
+実習で使うDAQコンポーネントが入っています。
 
-Spartan 3Eにトリガー信号を送るプログラム
+    * RawDataReader
+    * RawDataMonitor
+    * RawDataLogger
+    * Dispatcher
 
 * Trigger
 
-バックアップソリューション
+Spartan 3Eにトリガー信号を送るプログラム
 
 * bs
 
-Spartan 3Eが送ってくるデータのデータフォーマット
+バックアップソリューション
 
 * doc
 
-砂場
+Spartan 3Eが送ってくるデータのデータフォーマット
 
 * sandbox
 
+実習に使用するファイルが入っています。

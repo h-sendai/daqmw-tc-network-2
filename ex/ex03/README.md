@@ -18,9 +18,19 @@
 
 とunionを使って定義し、バイトオーダを確認するプログラムを書く。
 
-サンプルコードはbs/byte_orderにある。
+サンプルコードは ~/daqmw-tc/bs/byte_order にある。
+変換は
 
-htonl()を使うにはman htonlするとわかるように
+    #include <apra/inet.h>
+    
+    int x = 0x12345678;
+    int y = htonl(x);
+    int z = ntohl(y);
+
+のように行う。
+
+htonl()を使うために必要なインクルードファイルはman htonlするとSYNOPSISの
+ところに書いているとおりで、上の例のように
 
     #include <apra/inet.h>
 
@@ -30,3 +40,15 @@ unionは上のように定義したときにx.numとするとintとしてアク�
 これとおなじ内容でunsigned charとしてアクセスするときには
 x.buf[0], x.buf[1], x.buf[2], x.buf[3]を使う。
 
+出力例:
+
+    変数名: 変数アドレス: 配列インデックス: 値
+    
+    x: 0x7fff78597440 0 0x78
+    x: 0x7fff78597441 1 0x56
+    x: 0x7fff78597442 2 0x34
+    x: 0x7fff78597443 3 0x12
+    y: 0x7fff78597430 0 0x12
+    y: 0x7fff78597431 1 0x34
+    y: 0x7fff78597432 2 0x56
+    y: 0x7fff78597433 3 0x78

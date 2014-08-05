@@ -18,8 +18,8 @@ Source code for DAQMW Training Course
 この文書ではこのディレクトリを ~/daqmw-tcと書きます。
 その中には以下のディレクトリ(複数)ができます。
 
-daqmw [to code directory](daqmw/)
----------------------------------
+[daqmw](daqmw/)
+---------------
 
 実習で使うDAQコンポーネントが入っています。
 
@@ -28,28 +28,28 @@ daqmw [to code directory](daqmw/)
 * RawDataLogger
 * Dispatcher
 
-trigger
--------
+[trigger](trigger/)
+-------------------
 
 実習で使うSpartan 3Eにトリガー信号を送るプログラムが入っています。
 
-bs
---
+[bs](bs/)
+---------
 
 実習の解答例があります。
 
-doc
----
+[doc](doc/)
+-----------
 
 実習で使うSpartan 3Eが送ってくるデータのデータフォーマットが入っています。
 
-ex
---
+[ex](ex/)
+---------
 
 実習で行う項目、コードなどが入っています。
 
-sandbox
--------
+[sandbox](sandbox/)
+-------------------
 
 受講者のかたがたは必要ならこのディレクトリにファイルをコピーするなどして
 実習してください。

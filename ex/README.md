@@ -14,3 +14,5 @@
 - [ex09](ex09/) ncコマンドでデータを読みグラフを画面に表示する
 - [ex10](ex10/) DAQ-Middleware付属サンプルコンポーネントを動かしてみる
 - [ex11](ex11/) Webモードでシステムを動かす
+- [ex12](ex12/) ボードを読むシステム(DAQ-Middleware使用)を動かしてみる(Reader - Logger)
+- [ex13](ex13/) ボードを読んでモニターするシステムをDAQ-Middlewareで作る(Reader - Monitor)

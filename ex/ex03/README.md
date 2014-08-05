@@ -89,5 +89,5 @@ char bufferからの数値の取り出し
     
     // buf[6] buf[7]のshortの取り出しも同様
 
-ソースファイルは ~/daqmw-tc/ex/ex3 にあるので ~/sandbox/ ディレクトリにコピーして
+ソースファイルは ~/daqmw-tc/ex/ex03 にあるので ~/sandbox/ ディレクトリにコピーして
 試してみる。

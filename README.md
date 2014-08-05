@@ -5,11 +5,18 @@ Source code for DAQMW Training Course
 
 2014年9月開催のDAQ-Middlewareトレーニングコース実習用ファイルです。
 
-ファイルをダウンロードするには次のコマンドを実行します。
+ファイルをダウンロードするにはターミナルを開いて次のコマンドを実行します。
 
-    git clone https://github.com/h-sendai/DAQMW-TC.git
+    % cd
+    % git clone https://github.com/h-sendai/DAQMW-TC.git
 
-ダウンロードすると以下のディレクトリができます。
+パーセント記号(%)はコマンドラインのプロンプトで入力する必要は
+ありません。最初のcdコマンドはホームディレクトリに移動するために
+行っています。
+
+ダウンロードするとホームディレクトリにDAQMW-TCというディレクトリができます。
+この文書ではこのディレクトリを ~/DAQMW-TCと書きます。
+その中には以下のディレクトリ(複数)ができます。
 
 daqmw
 -----
@@ -21,7 +28,7 @@ daqmw
 * RawDataLogger
 * Dispatcher
 
-Trigger
+trigger
 -------
 
 実習で使うSpartan 3Eにトリガー信号を送るプログラムが入っています。

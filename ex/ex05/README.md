@@ -1,53 +1,76 @@
-(�ơ���)�ե�������ɤ�ǥǥ�����
+(テーマ)ファイルを読んでデコード
 ================================
 
-�����ǡ�����ǥ����ɤǤ���褦�ˤ��롣
+ローデータをデコードできるようにする。
 
 
-�½�����
-========
+実習内容
+--------
 
-�½��˻Ȥ��ܡ��ɤ���Ȥä��ǡ�����ǥ����ɤ���롼�����񤯡�
+実習に使うボードからとったデータをデコードするルーチンを書く。
+できたデコードプログラムは最終的にDAQ-Middlewareコンポーネントに
+組み込むことになる。
 
-�ޤ��ǡ����ե����ޥåȤ򤷤�ʤ���Фʤ�ʤ���
-�ǡ����ե����ޥåȤ�doc/raw-data-packet-format.pdf�ˤ��롣
+データフォーマット
+------------------
 
-�إå����ȡ��ǡ������ˤ狼��Ƥ��롣
-�إå�����Ĺ����12�Х��ȤǸ���Ǥ��롣���Τʤ��˼���³���ǡ�������
-Ĺ�����񤤤Ƥ���(�Х��Ȥ�ñ��)������¾�إå��ˤ�
+まずデータフォーマットをしらなければならない。
+データフォーマットは ~/daqmw-tc/doc/raw-data-packet-format.pdf にある。
+Linux上でPDFファイルを読むにはevinceプログラムを使う:
 
-* �ǡ���������(0xf) (¾�Υǡ����ѥ��åȤȸ�ʬ����Τ���Ū)
-* Word length (2) (1�ȥꥬ1�����ͥ�1������ɥ��ǡ����ΥХ��ȥ�����)
-* # of Ch (16) (�����ͥ��)
-* �ǡ���Ĺ
-* �ȥꥬ��������� (0���ǽ顣�ȥꥬ���������뤴�Ȥ�1�Ť�������)
+    % evince ~/daqmw-tc/doc/raw-data-packet-format.pdf
 
-�ξ������äƤ���ΤǤ������Ф���ʣ���Х��Ȥǹ����������ͤϤ������
-�ͥåȥ���Х��ȥ������ˤʤäƤ���Τǡ�PC�ǰ����ˤ��Ѵ���ɬ�פˤʤ롣
+ヘッダ部と、データ部にわかれている。
+ヘッダ部の長さは12バイトで固定である。このなかに次に続くデータ部の
+長さが書いてある(バイトを単位)。その他ヘッダには
 
-�ץ�������template/read_file_decode�ˤ��뤬���ǥ�������ʬ�Υ᥽�åɤ�
-�񤤤Ƥʤ��ΤǤ�������뤳�ȡ�
+* データタイプ(0xf) (他のデータパケットと見分けるのが目的)
+* Word length (2) (1トリガ1チャンネル1ウインドウデータのバイトサイズ)
+* # of Ch (16) (チャンネル数)
+* データ長
+* トリガーカウント (0が最初。トリガーがかかるごとに1づつ増える)
 
-�Ǥ����ǥ����ɥץ������Ϻǽ�Ū��DAQ-Middleware����ݡ��ͥ�Ȥ��Ȥ߹��ळ�Ȥˤʤ롣
+の情報が入っている。複数バイトで構成される数値はいずれも
+ネットワークバイトオーダになっているので、PCで扱うには変換が必要になる。
 
-����ץ�ǡ�����bs/sample.dat�ˤ��롣���Υե�����Υǡ�������ǥ����ɤ���
-trg: XXX ch: XXX window: XXX data: XXX
-���¤٤���Τ�bs/ascii.sample�Ȥ��Ƥ����Ƥ���ΤǼ�ʬ�ǽ񤤤��ץ�������OK��
-�ɤ����Ϥ����Ʊ���ե����ޥåȤǽ��Ϥ���褦�ˤ�����Ӥ��뤳�Ȥǲ�ǽ�Ǥ��롣
-��ӤˤϤ��Ȥ���diff�ץ�������Ȥ��ȵ���Ū�ˤǤ��롣
+word lengthとチャンネル数とデータ長から、何ウインドウ分のデータが
+入っているのかがわかる:
 
-    diff -u file_a file_b
+     ウインドウ数 = データ長 / ((word length)*(チャンネル数))
 
-�㤤���ʤ���Фʤˤ���Ϥ���ʤ���
+行う作業内容
+------------
 
-�ե�����
+プログラムは ~/daqmw-tc/ex/ex5/read_file_decode/ にあるのでこれをコピーして
+使う:
+
+    % cd ~/sandbox
+    % cp -r ../ex/ex5 .
+
+デコード部分のメソッドが書いてないのでこれを埋めること。
+
+サンプルデータは ~/daqmw-tc/bs/sample.dat にある。
+このファイルのデータ部をデコードして
+
+    trg: XXX ch: XXX window: XXX data: XXX
+
+と並べたものを ~/daqmw-tc/bs/ascii.sample としておいてあるので
+自分で書いたプログラムでOKかどうかはこれと同じフォーマットで
+出力するようにして比較することで可能である。
+比較にはたとえばdiffプログラムを使うと機械的にできる。
+
+    % diff -u file_a file_b
+
+違いがなければなにも出力されない。
+
+ファイル
 
 * Makefile
-* RawDataPacket.h     �ǥ����ɥ롼���󥯥饹�ե�����
-* RawDataPacket.cpp   �ǥ����ɥ롼���󥯥饹����(�ƥ᥽�åɤ��񤤤Ƥʤ��Τ�����)
-* read_file_decode.cpp fread()��Ȥäƥե�������ɤ�(���Τʤ���RawDataPacket�Ǽ��������᥽�åɤ�ȤäƤ��롣main()�Ϥ��Τʤ��ˤ���)��
+* RawDataPacket.h     デコードルーチンクラスファイル
+* RawDataPacket.cpp   デコードルーチンクラス実装(各メソッドが書いてないので埋める)
+* read_file_decode.cpp fread()を使ってファイルを読む(このなかでRawDataPacketで実装したメソッドを使っている。main()はこのなかにある)。
 
-��������᥽�å�(�إå���)
+実装するメソッド(ヘッダ部)
 
 * is_raw_data_packet()
 * get_word_size()
@@ -55,14 +78,17 @@ trg: XXX ch: XXX window: XXX data: XXX
 * get_num_of_ch()
 * get_window_size()
 
-get_window_size()�ϥǡ���Ĺ/(��ɥ�����*�����ͥ��)�ǵ�᤿window�����֤����ȡ�
+get_window_size()はデータ長/(ワードサイズ*チャンネル数)で求めたwindow数を返すこと。
 
-�ǡ�����
+データ部
 
 * get_data_at(int ch, int window)
 
-�ǡ�������window���ȤˤޤȤޤäƤ��ƤҤȤĤΥ����ͥ�Υǡ�����Ϣ³���Ƥ���
-�櫓�ǤϤʤ����ǥ����ɤ���ݤˤϥ����ͥ뤴�ȤΥǡ������ۤ������Ȥ�¿������
-�פ��Τǡ������˥����ͥ��ֹ桢window����ꤹ�뤳�Ȥˤ�����
+データ部はwindowごとにまとまっていてひとつのチャンネルのデータが連続している
+わけではない。デコードする際にはチャンネルごとのデータがほしいことが多いかと
+思うので、引数にチャンネル番号、windowを指定することにした。
 
-�ƥ᥽�åɤ����������Τ�bs/read_file_decode�ˤ����Ƥ��롣
+解答例
+------
+
+各メソッドを実装したものを ~/daqmw-tc/bs/read_file_decode/ においてある。

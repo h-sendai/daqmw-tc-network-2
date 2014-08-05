@@ -70,7 +70,7 @@ word lengthとチャンネル数とデータ長から、何ウインドウ分の
 * RawDataPacket.cpp   デコードルーチンクラス実装(各メソッドが書いてないので埋める)
 * read_file_decode.cpp fread()を使ってファイルを読む(このなかでRawDataPacketで実装したメソッドを使っている。main()はこのなかにある)。
 
-実装するメソッド(ヘッダ部)
+実装するメソッド(ヘッダデータを読むところ)
 
 * is_raw_data_packet()
 * get_word_size()
@@ -80,7 +80,7 @@ word lengthとチャンネル数とデータ長から、何ウインドウ分の
 
 get_window_size()はデータ長/(ワードサイズ*チャンネル数)で求めたwindow数を返すこと。
 
-データ部
+データ部を読むところ
 
 * get_data_at(int ch, int window)
 

@@ -44,7 +44,7 @@ word lengthとチャンネル数とデータ長から、何ウインドウ分の
 プログラムは ~/daqmw-tc/ex/ex5/read_file_decode/ にあるのでこれをコピーして
 使う:
 
-    % cd ~/sandbox
+    % cd ~/daqmw-tc/sandbox
     % cp -r ../ex/ex5 .
 
 デコード部分のメソッドが書いてないのでこれを埋めること。

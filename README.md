@@ -18,8 +18,8 @@ Source code for DAQMW Training Course
 この文書ではこのディレクトリを ~/daqmw-tcと書きます。
 その中には以下のディレクトリ(複数)ができます。
 
-daqmw
------
+[daqmw](daqmw/)
+---------------
 
 実習で使うDAQコンポーネントが入っています。
 

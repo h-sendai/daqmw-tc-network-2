@@ -8,14 +8,14 @@ Source code for DAQMW Training Course
 ファイルをダウンロードするにはターミナルを開いて次のコマンドを実行します。
 
     % cd
-    % git clone https://github.com/h-sendai/DAQMW-TC.git
+    % git clone https://github.com/h-sendai/daqmw-tc.git
 
 パーセント記号(%)はコマンドラインのプロンプトで入力する必要は
 ありません。最初のcdコマンドはホームディレクトリに移動するために
 行っています。
 
-ダウンロードするとホームディレクトリにDAQMW-TCというディレクトリができます。
-この文書ではこのディレクトリを ~/DAQMW-TCと書きます。
+ダウンロードするとホームディレクトリにdaqmw-tcというディレクトリができます。
+この文書ではこのディレクトリを ~/daqmw-tcと書きます。
 その中には以下のディレクトリ(複数)ができます。
 
 daqmw

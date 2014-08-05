@@ -19,3 +19,4 @@ bs/fread/fread_sample
 bs/byte_order/sample
 ex/ex1/sample
 ex/ex2/main
+ex/ex3/extract_from_buf

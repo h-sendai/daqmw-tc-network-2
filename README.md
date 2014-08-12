@@ -4,6 +4,7 @@ DAQMW-TC
 Source code for DAQMW Training Course
 
 2014年9月開催のDAQ-Middlewareトレーニングコース実習用ファイルです。
+実習に入るまえに何をどういう手順で行うのかを説明します。
 
 ファイルをダウンロードするにはターミナルを開いて次のコマンドを実行します。
 
@@ -22,6 +23,8 @@ Source code for DAQMW Training Course
 ---------------
 
 実習で使うDAQコンポーネントが入っています。
+実習途中でにっちもさっちもいかなくなったらこれを見て学習するのも
+DAQ-Middleware習得手段のひとつだと思っていれてあります。
 
 * RawDataReader
 * RawDataMonitor

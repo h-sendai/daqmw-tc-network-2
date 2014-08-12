@@ -20,7 +20,7 @@ Readerはすでにdaqmw/RawDataReader/ディレクトリにあるのでこれを
 
     % cd
     % mkdir RawData (ホームディレクトリにRawDataディレクトリを作成。作るシステムはこの下にいれる)
-    % cd MyDaq
+    % cd RawData
     % cp -r ~/daqmw-tc/daqmw/RawDataReader .
     % cd RawDataReader
     % make

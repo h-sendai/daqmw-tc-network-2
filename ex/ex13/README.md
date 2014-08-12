@@ -50,6 +50,15 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
 このままではロジックはSampleMonitorのままなのでRawDataフォーマット
 にあわせる、描画するものを変更するなどの作業が必要になる。
 
+デコードルーチンは [../ex05](ex05) で書いたものを使うので
+RawDataPacket.hおよびRawDataPacket.cppをコピーし、さらに
+Makefileで
+
+    SRCS += RawDataPacket.cpp
+
+の行を追加する。これでコードを書く準備ができた。あとはロジックを
+書き直せばよい。
+
 2. RawDataMonitorコンポーネントの作成
 ------------------------------------
 
@@ -62,7 +71,7 @@ RawDataMonitor.hでの変更点
 - SampleMonitorでは上流からくるデータをいれるバッファとして
 
         unsigned char m_recv_data[4096];
-を使っている。
+を使っている。これはSampleMonitorの上流コンポーネントから送られてくるデータ長が4096バイトの固定長だからである。
 RawDataMonitorではフォーマット上はデータ長は固定長ではないので、
 大きめにバッファを確保する必要がある。たとえば
 

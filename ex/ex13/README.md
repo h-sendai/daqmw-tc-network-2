@@ -50,7 +50,7 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
 このままではロジックはSampleMonitorのままなのでRawDataフォーマット
 にあわせる、描画するものを変更するなどの作業が必要になる。
 
-デコードルーチンは [../ex05](ex05) で書いたものを使うので
+デコードルーチンは [ex05](../ex05) で書いたものを使うので
 RawDataPacket.hおよびRawDataPacket.cppをコピーし、さらに
 Makefileで
 

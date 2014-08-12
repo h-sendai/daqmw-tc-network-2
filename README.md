@@ -6,6 +6,8 @@ Source code for DAQMW Training Course
 2014年9月開催のDAQ-Middlewareトレーニングコース実習用ファイルです。
 トレーニングコース内で実習に入るまえに何をどういう手順で行うのかを説明します。
 
+![実習システムの様子](http://daqmw.kek.jp/seminar/2014/spartan_and_mac-small.png)
+
 ファイルの取得
 --------------
 

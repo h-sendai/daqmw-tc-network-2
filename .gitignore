@@ -22,3 +22,7 @@ ex/ex2/main
 ex/ex3/extract_from_buf
 ex/create-pdf/ex.*
 ex/create-pdf/ex*.*
+ex/create-pdf/*.dvi
+ex/create-pdf/*.out
+ex/create-pdf/*.aux
+ex/create-pdf/*.log

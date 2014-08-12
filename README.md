@@ -8,6 +8,15 @@ Source code for DAQMW Training Course
 
 ![実習システムの様子](http://daqmw.kek.jp/seminar/2014/spartan_and_mac-small.png)
 
+受講者のかたがたは以下のものを用意してください。
+
+- パソコン(Windows Vista/7/8あるいはMacOS X)
+- 有線LANで接続できるイーサネット(パソコンにLANポートが付いていない場合は
+上の写真のようにUSBイーサネットアダプタを用意のうえ参加してください)
+
+パソコンにはVirtualBoxをインストールして、仮想Scientific Linux 6.5上で
+実習を行います。セットアップ方法はトレーニングコース前におしらせします。
+
 ファイルの取得
 --------------
 

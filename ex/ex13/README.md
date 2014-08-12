@@ -62,14 +62,12 @@ RawDataMonitor.hでの変更点
 - SampleMonitorでは上流からくるデータをいれるバッファとして
 
         unsigned char m_recv_data[4096];
-
 を使っている。
 RawDataMonitorではフォーマット上はデータ長は固定長ではないので、
 大きめにバッファを確保する必要がある。たとえば
 
         const static unsigned int DATA_BUF_SIZE = 1024*1024; // 1MB
         unsigned char m_recv_data[DATA_BUF_SIZE];
-
 とする。
 
 ほとんどのシステムではデータをファイルに保存するDAQコンポーネントは

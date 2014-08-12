@@ -26,3 +26,4 @@ ex/create-pdf/*.dvi
 ex/create-pdf/*.out
 ex/create-pdf/*.aux
 ex/create-pdf/*.log
+ex/create-pdf/*.pdf

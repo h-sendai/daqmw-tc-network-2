@@ -15,6 +15,7 @@ DAQ-Middleware化を行う。
 4. システム起動、ラン
 5. trigger.pyでボードにトリガーを送りグラフが更新されていることを確認する
 6. trigger停止
+7. モニターの改造など
 
 となる。
 
@@ -62,9 +63,12 @@ Makefileで
 2. RawDataMonitorコンポーネントの作成
 ------------------------------------
 
+まずチャンネル0のデータのグラフを書くのを目標にし、正常動作したあと
+残りのチャンネルも表示するという順でやるのがよいかと思う。
+
 以下変更を要する点のポイントを書いておく。
 
-RawDataMonitor.hでの変更点
+### RawDataMonitor.hでの変更点
 
 - SampleMonitorではヒストグラムを書いていたのでTH1.hをインクルードし、
   HT1F *m_histとしてヒストグラムへのポインタを宣言していたが、RawDataMonitorでは書くものはグラフなのでTGraph.hをインクルードし、変数名、型もそれにあわせて変更する必要がある。
@@ -79,69 +83,86 @@ RawDataMonitorではフォーマット上はデータ長は固定長ではない
         unsigned char m_recv_data[DATA_BUF_SIZE];
 とする。
 
-ほとんどのシステムではデータをファイルに保存するDAQコンポーネントは
-DAQ-Middlewareに例題として付属しているSampleLoggerコンポーネントを
-使うことができる。SampleLoggerコンポーネントは
+### RawDataMonitor.cppでの変更点
 
-- データをコンフィギュレーションファイルのdirNameパラメータで指定したディレクトリに保存する
-- ファイルがmaxFileSizeInMegaByteパラメータで指定するバイト数を越えたら次のファイルに書く
-  (イベント途中で次のファイルに移ることはない。Readerコンポーネントが1回に送ったデータを途中
-  で分断することはしない)。
-- 保存するファイル名はYYYYMMDDTHHMMSS_RRRRR_BBB.dat (RRRRRはrun番号、BBBは000から始まる連番)。
-  例:20110202T143748_000000_000.dat
-- パラメータのisLoggingがyesになっている場合に実際にデータを保存する。
-  noになっている場合はデータは保存しない(テストに使ったりする)
+状態遷移関数(daq_configure(), daq_start()など)および特定の状態にある関数
+(daq_run())について状態遷移の順番にコードを修正していくのがよいかと
+思う。
 
-と動作する。
+#### daq_configure()
 
-コピーしてそのままの名前で使ってもよいが、少し改造する場合もある
-(たとえば「イベントデータのなかに時刻情報が入っていないのでLoggerコンポーネントが
-動いているPCから時刻情報を取得して時刻情報を追加して書くようにするなど)。
-その場合は動作仕様が変わってくるので名前をSampleLoggerから変更したほうがよい。
-ここでSample*コンポーネントの名前を変更する方法を学ぶ。SampleLoggerからRawDataLoggerに
-名前を変更することにする。
+特に変更はない。パラメータを増やしたときにはdaq_configure()から呼ばれている
+parse_params()を変更する。
 
-コード上では大文字小文字を以下のように使い分けている。かならずこのように
-しなければならないわけではないが、習慣上そうなっているので引継が生じるなどの場面を
-考えると守っておいたほうがよい。
+#### daq_start()
 
-- samplelogger (全部小文字) InPort、OutPortの名前
-- SampleLogger (大文字小文字ミックス。最初の文字、および単語の切れ目は大文字) ファイル名、コンポーネント名
-- SAMPLELOGGER (全部大文字) インクルードガード
+SampleMonitorではヒストグラムデータ(m_hist)を使っているが、今回は
+グラフで変数名も変えているはずなのでそれにあわせて変更する必要がある。
 
-SampleLoggerコンポーネントは /usr/share/daqmw/example/SampleLogger/ ディレクトリに
-ある。これをコピーして、手で修正してもよいが間違いが生じる可能性が大きいので
-sedコマンドを使ったスクリプトを用意したのでこれを使う(現在のDAQ-Middlewareにはまだないが今後
-追加する予定になっている)。
+ここで行う処理はグラフデータがあれば、それをdeleteし、あらたにTGraph()
+オブジェクトを作成することである。
 
-    % cd ~/RawData
-    % cp -r /usr/share/daqmw/examples/SampleLogger .
-    % mv SampleLogger RawDataLogger (ディレクトリ名の書き換え)
-    % cd RawDataLogger
-    % cp ~/daqmw-tc/daqmw/utils/change-SampleLogger-name.sh .
-    % chmod +x change-SampleLogger-name.sh
-    (change-SampleLogger-name.shのなかみを見てみる)
-    (RawDataLoggerではない名前に変更する場合はnew_name_camel_caseを変更する)
-    % ./change-SampleLogger-name.sh
-    % grep -i sample * などしてSample, sampleの文字が残っていないかどうか確認
-    % make
+#### daq_run()
 
-これでRawDataLoggerCompという実行ファイルができる。
+1. 上流コンポーネントから送られてきたデータを読み
+2. デコードしてグラフデータをセットする(m_graph->SetPoint()などを使う)
+3. ときどきグラフを画面に書く
+
+という処理をおこなう。
+
+上流コンポーネントから送られてくるデータを読むところは変更する必要は
+ない。
+
+デコードしてグラフデータをセットする部分はdaq_run()から呼ばれている
+fill_data()関数を使う。
+SampleMonitorではfill_data()関数内でSampleMonitor::decode_data()関数
+を使ってデコードを行っている。
+今回実習で作成するRawDataMonitorではすでに実装ずみの
+デコードルーチンを使うのでdecode_data()関数は必要ではない(消すときは
+RawDataMonitor.cppでの実装部だけではなくRawDataMonitor.hの
+decode_data()関数を宣言しているところも消す必要がある)。
+
+ときどきグラフを書くというのは以下の部分である:
+
+    if (m_monitor_update_rate == 0) {
+        m_monitor_update_rate = 1000;
+    } // m_monitor_update_rateが指定されていなかった場合に備えている
+
+    // daq_run()内前半で上流からデータを読んでいるが
+    // 読めたらシーケンス番号を1づつ増やしているので
+    // その数字を使ってm_monitor_update_rate回に一回画面上の図を更新
+    // している
+    unsigned long sequence_num = get_sequence_num();
+    if ((sequence_num % m_monitor_update_rate) == 0) {
+        m_hist->Draw();
+        m_canvas->Update();
+    }
+
+#### daq_stop()
+
+daq_stop()に以降した直前に読んだデータを使って画面に図を出す処理を書く。
+
+#### daq_unconfigure()
+
+SampleReaderではヒストグラムデータ、RawDataMonitorではグラフデータを
+deleteする(daq_start()でnewしていたのでdeleteしないと多数回start/stopを
+繰り返したときにメモリーを浪費する)。
 
 3. コンフィギュレーションファイルの作成
 ---------------------------------------
 
 コンフィギュレーションファイルを作る。ほぼ完成された雛型を
-~/daqmw-tc/daqmw/reader-logger.xmlに用意してあるのでそれを編集して使う。
+~/daqmw-tc/daqmw/reader-monitor.xmlに用意してあるのでそれを編集して使う。
 
     % cd ~/RawData
-    % cp ~/daqmw-tc/daqmw/reader-logger.xml .
+    % cp ~/daqmw-tc/daqmw/reader-monitor.xml .
     % reader-logger.xmlのexecPathを自分の環境にあわせて編集
+
 
 4. システム起動、ラン
 ---------------------
 
-    % run.py -cl reader-logger.xml
+    % run.py -cl reader-monitor.xml
 
 でシステムを起動し、0, 1とキーを押してシステムを動かす。
 
@@ -153,19 +174,29 @@ sedコマンドを使ったスクリプトを用意したのでこれを使う(�
 としてstartボタンを押しトリガーを送る。読みだしシステムのイベントバイト数が
 増えるのを確認する。
 
-6. trigger停止、システム停止
+6. trigger停止
 --------------
 
 trigger GUIのstopボタンを押しトリガーを送るのを停止する。
 2を押してシステムを止める。
 
+7. モニターの改造
+-----------------
 
-7. データがセーブされていることを確認
--------------------------------------
+できあがったら全てのチャンネルを表示するようにする。
 
-/tmp/ディレクトリにデータが保存されているのを確認する。
-hexdumpコマンド、あるいは以前作ったファイルを読んでデコードするプログラムで
-正当性を確認する。
-    
+モニターしながらデータも保存するというシステムにするには
+既に試したRawDataLoggerの他にDispatcherコンポーネントが
+必要になる。Dispatcherのソースコードは
+/usr/share/daqmw/examples/Dispatcherにあるのでコピーして
+コンパイルする(Dispatcherを改造することはあまりないので
+ここでは名前の変更は行わない)
 
+    % cd ~/RawData
+    % cp -r /usr/share/daqmw/examples/Dispatcher .
+    % cd Dispatcher
+    % make
+
+4個のDAQコンポーネントを使う場合のコンフィギュレーションファイルは
+~/daqmw-tc/daqmw/4comps.xml にあるのでコピーして変更して使う。
 

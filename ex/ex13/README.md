@@ -3,6 +3,9 @@
 
 ボードからデータを読んで保存できるようになったので、保存ではなくて
 オンラインでグラフを書くモニターコンポーネントを開発する。
+ex09で行ったncコマンドで読んでパイプ経由でグラフを書いたシステムの
+DAQ-Middleware化を行う。
+
 作業の順番としては
 
 1. RawDataReader - RawDataLoggerコンポーネントを作ったディレクトリに
@@ -10,27 +13,64 @@
 2. RawDataMonitorコンポーネントの作成
 3. コンフィギュレーションファイルの作成
 4. システム起動、ラン
-5. trigger.pyでボードにトリガーを送る
+5. trigger.pyでボードにトリガーを送りグラフが更新されていることを確認する
 6. trigger停止
-7. データがセーブされていることを確認
 
 となる。
 
-1. RawDataReaderコンポーネントの作成
+1. RawDataMonitorコンポーネントの場所の確保
+-------------------------------------------
+
+通常、一からRawDataMonitorコンポーネントを書くのではなくて
+すでにあるSampleMonitorをコピーして、データフォーマットを変更、
+自分の用途にあうように改良していく。
+
+SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
+/usr/share/daqmw/examples/SampleMonitorに入っているのでまず
+これをコピーする:
+
+    % cd ~/DaqData
+    % cp -r /usr/share/daqmw/examples/SampleMonitor .
+    % cd SampleMonitor
+    % make (正常にコピーされたかどうか確認する)
+
+最後のmakeコマンドは正常に終了しSampleReaderCompができているはずである。
+できていたらOKなので、生成されたオブジェクト、実行ファイルを消して
+前回同様コンポーネント名をRawDataMonitorに変更する作業を行う。
+
+    % make clean
+    % cp ~/daqmw-tc/daqmw/utils/change-SampleMonitor-name.sh .
+    % sh change-SampleMonitor-name.sh
+    % cd ..
+    % mv SampleMonitor RawDataMonitor
+    % make (名前を変えただけなので正常にコンパイルできるはず)
+
+最後のmakeでエラーが出ないことを確認する。
+
+このままではロジックはSampleMonitorのままなのでRawDataフォーマット
+にあわせる、描画するものを変更するなどの作業が必要になる。
+
+2. RawDataMonitorコンポーネントの作成
 ------------------------------------
 
-Readerはすでにdaqmw/RawDataReader/ディレクトリにあるのでこれをコピーして
-使う。
+以下変更を要する点のポイントを書いておく。
 
-    % cd
-    % mkdir RawData (ホームディレクトリにRawDataディレクトリを作成。作るシステムはこの下にいれる)
-    % cd MyDaq
-    % cp -r ~/daqmw-tc/daqmw/RawDataReader .
-    % cd RawDataReader
-    % make
+RawDataMonitor.hでの変更点
 
-2. RawDataLoggerコンポーネントの作成
-------------------------------------
+- SampleMonitorではヒストグラムを書いていたのでTH1.hをインクルードし、
+  HT1F *m_histとしてヒストグラムへのポインタを宣言していたが、RawDataMonitorでは書くものはグラフなのでTGraph.hをインクルードし、変数名、型もそれにあわせて変更する必要がある。
+- SampleMonitorでは上流からくるデータをいれるバッファとして
+
+        unsigned char m_recv_data[4096];
+
+を使っている。
+RawDataMonitorではフォーマット上はデータ長は固定長ではないので、
+大きめにバッファを確保する必要がある。たとえば
+
+        const static unsigned int DATA_BUF_SIZE = 1024*1024; // 1MB
+        unsigned char m_recv_data[DATA_BUF_SIZE];
+
+とする。
 
 ほとんどのシステムではデータをファイルに保存するDAQコンポーネントは
 DAQ-Middlewareに例題として付属しているSampleLoggerコンポーネントを

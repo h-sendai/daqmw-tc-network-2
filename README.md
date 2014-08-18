@@ -1,7 +1,7 @@
 DAQMW-TC
 ========
 
-Source code for DAQMW Training Course
+[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2014/)
 
 2014年9月開催のDAQ-Middlewareトレーニングコース実習用ファイルです。
 トレーニングコース内で実習に入るまえに何をどういう手順で行うのかを説明します。

@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
         /* fread returns successfully */
         if (n != sizeof(buf)) {
             fprintf(stderr, "paritial read: %ld bytes (should be %ld bytes)\n",
-                n, sizeof(buf));
+                (long) n, (long) sizeof(buf));
         }
         /* do something */
     }

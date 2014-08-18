@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
         }
         /* fread returns successfully */
         if (n != sizeof(buf)) {
+            // use long cast to run both 32bit and 64bit system
             fprintf(stderr, "paritial read: %ld bytes (should be %ld bytes)\n",
                 (long) n, (long) sizeof(buf));
         }

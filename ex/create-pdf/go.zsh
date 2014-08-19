@@ -22,7 +22,7 @@ done
 for i in {01..$last_ex}; do
     if [ -f ../ex${i}/Makefile ]; then
         echo                                              >> ex${i}.tex
-        echo -E "\section*{Source Code: ex${i}/Makefile}" >> ex${i}.tex
+        echo -E "\subsection*{Source Code: ex${i}/Makefile}" >> ex${i}.tex
         echo -E "\VerbatimInput{../ex${i}/Makefile}"      >> ex${i}.tex
     fi
 
@@ -31,7 +31,7 @@ for i in {01..$last_ex}; do
         if [ -f $f ]; then
             file=$(basename $f | sed -e 's|_|\\_|g')
             echo                                           >> ex${i}.tex
-            echo -E "\section*{Source Code: ex${i}/$file}" >> ex${i}.tex
+            echo -E "\subsection*{Source Code: ex${i}/$file}" >> ex${i}.tex
             echo -E '\begingroup'                          >> ex${i}.tex
             echo -E '\catcode`\_=12\relax'                 >> ex${i}.tex
             echo -E "\VerbatimInput{$f}"                   >> ex${i}.tex
@@ -43,7 +43,7 @@ for i in {01..$last_ex}; do
         if [ -f $f ]; then
             file=$(basename $f | sed -e 's|_|\\_|g')
             echo                                           >> ex${i}.tex
-            echo -E "\section*{Source Code: ex${i}/$file}" >> ex${i}.tex
+            echo -E "\subsection*{Source Code: ex${i}/$file}" >> ex${i}.tex
             echo -E '\begingroup'                          >> ex${i}.tex
             echo -E '\catcode`\_=12\relax'                 >> ex${i}.tex
             echo -E "\VerbatimInput{$f}"                   >> ex${i}.tex

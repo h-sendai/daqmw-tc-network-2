@@ -26,6 +26,7 @@ for i in {01..$last_ex}; do
         echo -E "\VerbatimInput{../ex${i}/Makefile}"      >> ex${i}.tex
     fi
 
+    # we have to some work to include file which has _ (underscore) in filename
     for f in ../ex${i}/*.h; do
         if [ -f $f ]; then
             file=$(basename $f | sed -e 's|_|\\_|g')

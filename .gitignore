@@ -17,9 +17,10 @@ bs/read_nc_decode/read_nc_decode
 bs/read_nc_decode_graph/read_nc_decode_graph
 bs/fread/fread_sample
 bs/byte_order/sample
-ex/ex1/sample
-ex/ex2/main
-ex/ex3/extract_from_buf
+ex/ex01/sample
+ex/ex02/main
+ex/ex03/byte_order
+ex/ex04/extract_from_buf
 ex/create-pdf/ex.*
 ex/create-pdf/ex*.*
 ex/create-pdf/*.dvi

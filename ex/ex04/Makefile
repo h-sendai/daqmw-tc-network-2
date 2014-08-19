@@ -1,5 +1,6 @@
+CC = g++
 PROG = extract_from_buf
-CFLAGS = -g -O2 -Wall
+CXXFLAGS = -g -O2 -Wall
 # LDLIBS += -L/usr/local/lib -lmylib
 
 all: $(PROG)

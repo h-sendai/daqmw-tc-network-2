@@ -1,5 +1,6 @@
+CC = g++
 PROG = fread_sample
-CFLAGS = -g -O2 -Wall
+CXXFLAGS = -g -O2 -Wall
 # LDLIBS += -L/usr/local/lib -lmylib
 
 all: $(PROG)

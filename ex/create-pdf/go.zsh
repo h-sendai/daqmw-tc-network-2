@@ -5,7 +5,7 @@ setopt nonomatch
 
 last_ex=14
 
-export PATH=/usr/local/texlive/2013/bin/x86_64-linux:$PATH
+export PATH=/usr/local/texlive/2014/bin/x86_64-linux:$PATH
 
 rm -f ex??.tex
 rm -f ex.tex
@@ -52,5 +52,5 @@ for i in {01..$last_ex}; do
     done
 done
 
-platex frame
-dvipdfmx frame
+platex daqmw-tc-ex
+dvipdfmx daqmw-tc-ex

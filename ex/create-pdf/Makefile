@@ -1,6 +1,6 @@
-all: frame.pdf
+all: daqmw-tc-ex.pdf
 
-frame.pdf:
+daqmw-tc-ex.pdf:
 	./go.zsh
 
 clean:

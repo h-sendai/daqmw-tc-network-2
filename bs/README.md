@@ -1,11 +1,13 @@
 bsディレクトリ
 ==============
 
-実習1のコードが入っています。
+実習の参考解答、サンプルデータが入っています。
 
-* read_file_decode
-* draw_graph
-* read_file_decode_graph
-* read_nc_decode
-* read_nc_decode_graph
+| ディレクトリ名         | 実習番号 |
+|------------------------|----------|
+| read_file_decode       | (ex06)   |
+| draw_graph             | (ex07)   |
+| read_file_decode_graph | (ex08)   |
+| read_nc_decode         | (ex09)   |
+| read_nc_decode_graph   | (ex10)   |
 

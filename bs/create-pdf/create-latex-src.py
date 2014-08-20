@@ -5,10 +5,10 @@ import sys
 import time # for sleep
 
 def get_latex_head():
-    src = r"""\documentclass[10pt]{jsarticle}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{enumerate}
+    src = r"""\documentclass[11pt]{jsarticle}
+%\usepackage{graphicx}
+%\usepackage{hyperref}
+%\usepackage{enumerate}
 \usepackage{fancyvrb}
 \fvset{
     tabsize=4,

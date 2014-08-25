@@ -5,13 +5,30 @@ DAQ-Middlewareを稼働させる方法にはコンソールモードと
 Webモードがある。コンソールモードで動かす方法はすでに
 試したので、次にWebモードで動かすのを試してみる。
 
+まずapacheが起動しているかどうかを確認する。
+
+    root# service httpd status
+
+httpd (pid 12345) is running... とでる場合はhttpdは起動しているので
+OK。
+
+httpd is stoppedとでた場合は起動していないので起動する:
+
+    root# service httpd start
+
+OS起動時に自動起動するようにするためには以下のコマンドを実行する:
+
+    root# chkconfig httpd on
+
+次にDAQ-Middlewareの起動の説明に移る。
+
 Webモードで起動するにはrun.pyを-cなしで起動する。
 
     % run.py -l sample.xml
 
 なにも表示されなければ正常に起動できている。
 Webブラウザを使って
-http://localhost/daqmw/scripts/OperatorPanel/OperatorPanel0.html
+http://localhost/daqmw/OperatorPanel/OperatorPanel0.html
 にアクセスするとWeb UIが起動する。
 
 configure, begin, end, unconfigureのボタンがあるので適当にボタンを

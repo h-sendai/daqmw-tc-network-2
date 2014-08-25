@@ -15,7 +15,7 @@ emulator - SampleReader - SampleMonitor
 以下に入っているのでそれをコピーする。
 
     % mkdir ~/MyDaq
-    % cd MyDaq
+    % cd ~/MyDaq
     % cp -r /usr/share/daqmw/examples/SampleReader .
     % cp -r /usr/share/daqmw/examples/SampleMonitor .
 
@@ -69,7 +69,8 @@ DaqOperatorCompは通常書き換える必要がないのですでにコンパ�
 システム起動
 ------------
 
-数値入力待ちになっているので0を押すとconfiugredになる。
+数値入力待ちになっているので0を押しエンターキーを押すとconfiugredになる
+(以下数字キーを押したあとは同様にエンターキーを押すこと)。
 1を押すとラン番号を入力するようなながされるので適当に番号(1とか2とか)
 を入力する。ラン番号を入力するとデータ収集を開始する。
 FATALエラーとなるが今の手順ではエミュレータを起動していないのでこれは

@@ -30,7 +30,7 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
 /usr/share/daqmw/examples/SampleMonitorに入っているのでまず
 これをコピーする:
 
-    % cd ~/DaqData
+    % cd ~/RawData
     % cp -r /usr/share/daqmw/examples/SampleMonitor .
     % cd SampleMonitor
     % make (正常にコピーされたかどうか確認する)
@@ -44,6 +44,7 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
     % sh change-SampleMonitor-name.sh
     % cd ..
     % mv SampleMonitor RawDataMonitor
+    % cd RawDataMonitor
     % make (名前を変えただけなので正常にコンパイルできるはず)
 
 最後のmakeでエラーが出ないことを確認する。
@@ -51,7 +52,7 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
 このままではロジックはSampleMonitorのままなのでRawDataフォーマット
 にあわせる、描画するものを変更するなどの作業が必要になる。
 
-デコードルーチンは [ex05](../ex05) で書いたものを使うので
+デコードルーチンは [ex06](../ex06) で書いたものを使うので
 RawDataPacket.hおよびRawDataPacket.cppをコピーし、さらに
 Makefileで
 
@@ -71,7 +72,7 @@ Makefileで
 ### RawDataMonitor.hでの変更点
 
 - SampleMonitorではヒストグラムを書いていたのでTH1.hをインクルードし、
-  HT1F *m_histとしてヒストグラムへのポインタを宣言していたが、RawDataMonitorでは書くものはグラフなのでTGraph.hをインクルードし、変数名、型もそれにあわせて変更する必要がある。
+  TH1F *m_histとしてヒストグラムへのポインタを宣言していたが、RawDataMonitorでは書くものはグラフなのでTGraph.hをインクルードし、変数名、型もそれにあわせて変更する必要がある。
 - SampleMonitorでは上流からくるデータをいれるバッファとして
 
         unsigned char m_recv_data[4096];

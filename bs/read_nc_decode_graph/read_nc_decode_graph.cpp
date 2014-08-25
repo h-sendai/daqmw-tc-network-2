@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 {
     FILE *fp;
     RawDataPacket r;
-    char *filename;
+    //char *filename;
     unsigned char buf[1024*1024];
     int n;
 
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
             
         int window_size   = r.get_window_size();
         int trigger_count = r.get_trigger_count();
-        int n_ch          = r.get_num_of_ch();
+        //int n_ch          = r.get_num_of_ch();
         
         //cout << "window_size:   " << window_size   << endl;
         //cout << "trigger_count: " << trigger_count << endl;

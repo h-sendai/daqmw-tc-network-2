@@ -41,7 +41,7 @@ word lengthとチャンネル数とデータ長から、何ウインドウ分の
 行う作業内容
 ------------
 
-プログラムは ~/daqmw-tc/ex/ex5/read_file_decode/ にあるのでこれをコピーして
+プログラムは ~/daqmw-tc/bs/read_file_decode/ にあるのでこれをコピーして
 使う:
 
     % cd ~/daqmw-tc/sandbox

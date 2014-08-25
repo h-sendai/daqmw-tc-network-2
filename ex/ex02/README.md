@@ -19,7 +19,7 @@ main.cppに書いてある(かならずmain.cppというファイル名で
 ファイルをコピーしてmakeで実行ファイルを作る:
 
     % cd ~/daqmw-tc/sandbox
-    % cp -r ../ex2 .
+    % cp -r ../ex02 .
     % make
 
 実行前にコードを見て結果を予想する。次に

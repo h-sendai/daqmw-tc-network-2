@@ -28,8 +28,8 @@ ex/create-pdf/*.out
 ex/create-pdf/*.aux
 ex/create-pdf/*.log
 ex/create-pdf/*.pdf
-create-pdf/daqmw-tc-bs.aux
-create-pdf/daqmw-tc-bs.dvi
-create-pdf/daqmw-tc-bs.log
-create-pdf/daqmw-tc-bs.pdf
-create-pdf/daqmw-tc-bs.tex
+bs/create-pdf/daqmw-tc-bs.aux
+bs/create-pdf/daqmw-tc-bs.dvi
+bs/create-pdf/daqmw-tc-bs.log
+bs/create-pdf/daqmw-tc-bs.pdf
+bs/create-pdf/daqmw-tc-bs.tex

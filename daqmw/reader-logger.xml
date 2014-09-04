@@ -17,7 +17,7 @@
                     <hostAddr>127.0.0.1</hostAddr>
                     <hostPort>50000</hostPort>
                     <instName>RawDataReader0.rtc</instName>
-                    <execPath>/home/sendai/RawData/RawDataReader/RawDataReaderComp</execPath>
+                    <execPath>/home/daq/RawData/RawDataReader/RawDataReaderComp</execPath>
                     <confFile>/tmp/daqmw/rtc.conf</confFile>
                     <startOrd>2</startOrd>
                     <inPorts>
@@ -34,7 +34,7 @@
                     <hostAddr>127.0.0.1</hostAddr>
                     <hostPort>50000</hostPort>
                     <instName>RawDataLogger0.rtc</instName>
-                    <execPath>/home/sendai/RawData/RawDataLogger/RawDataLoggerComp</execPath>
+                    <execPath>/home/daq/RawData/RawDataLogger/RawDataLoggerComp</execPath>
                     <confFile>/tmp/daqmw/rtc.conf</confFile>
                     <startOrd>1</startOrd>
                     <inPorts>

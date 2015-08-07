@@ -1,9 +1,9 @@
 DAQMW-TC
 ========
 
-[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2014/)
+[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2015/)
 
-2014年9月開催のDAQ-Middlewareトレーニングコース実習用ファイルです。
+2015年9月開催のDAQ-Middlewareトレーニングコース実習用ファイルです。
 トレーニングコース内で実習に入るまえに何をどういう手順で行うのかを説明します。
 
 ![実習システムの様子](http://daqmw.kek.jp/seminar/2014/spartan_and_mac-small.png)

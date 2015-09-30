@@ -28,7 +28,7 @@ Webモードで起動するにはrun.pyを-cなしで起動する。
 
 なにも表示されなければ正常に起動できている。
 Webブラウザを使って
-http://localhost/daqmw/OperatorPanel/OperatorPanel0.html
+http://localhost/daqmw/operatorPanel/operatorPanel0.html
 にアクセスするとWeb UIが起動する。
 
 configure, begin, end, unconfigureのボタンがあるので適当にボタンを

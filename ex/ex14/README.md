@@ -157,7 +157,7 @@ deleteする(daq_start()でnewしていたのでdeleteしないと多数回start
 
     % cd ~/RawData
     % cp ~/daqmw-tc/daqmw/reader-monitor.xml .
-    % reader-logger.xmlのexecPathを自分の環境にあわせて編集
+    % reader-monitor.xmlのexecPathを自分の環境にあわせて編集
 
 
 4. システム起動、ラン

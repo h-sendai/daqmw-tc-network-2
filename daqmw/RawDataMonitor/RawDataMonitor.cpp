@@ -49,6 +49,10 @@ RawDataMonitor::RawDataMonitor(RTC::Manager* manager)
     init_command_port();
     init_state_table();
     set_comp_name("RAWDATAMONITOR");
+
+    for (int i = 0; i < N_GRAPH; i++) {
+        m_graph[i] = 0;
+    }
 }
 
 RawDataMonitor::~RawDataMonitor()

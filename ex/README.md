@@ -13,5 +13,6 @@
 - [ex08](ex08/) ファイルを読みながらグラフを画面に表示する
 - [ex09](ex09/) ネットワークからデータを読みデコードする
 - [ex10](ex10/) ncコマンドでデータを読みグラフを画面に表示する
+- [ex11](ex11/) ncのかわりになるコマンドを自分で作る
 - [supplementary-ex01](supplementary-ex01/) threadの生成と終了
 - [supplementary-ex02](supplementary-ex02/) semaphoreを使ったリングバッファ

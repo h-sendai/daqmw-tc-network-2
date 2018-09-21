@@ -12,6 +12,7 @@ bsディレクトリ
 | read_file_decode_graph | (ex08)   |
 | read_nc_decode         | (ex09)   |
 | read_nc_decode_graph   | (ex10)   |
+| read-tc-board          | (ex11)   |
 
 | ファイル名   | 利用方法 |
 |:-------------|:---------|

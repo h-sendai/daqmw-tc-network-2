@@ -5,7 +5,7 @@ setopt nonomatch
 
 last_ex=14
 
-export PATH=/usr/local/texlive/2014/bin/x86_64-linux:$PATH
+export PATH=/usr/local/texlive/bin:$PATH
 
 rm -f ex??.tex
 rm -f ex.tex

@@ -64,15 +64,3 @@ DAQMW-TC
 ---------
 
 実習の解答例があります(全てではありません)。
-
-[daqmw](daqmw/)
----------------
-
-実習で使うDAQコンポーネントが入っています。
-実習途中でにっちもさっちもいかなくなったらこれを見て学習するのも
-DAQ-Middleware習得手段のひとつだと思っていれてあります。
-
-* RawDataReader
-* RawDataMonitor
-* RawDataLogger
-* Dispatcher

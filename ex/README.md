@@ -17,3 +17,6 @@
 - [ex12](ex12/) Webモードでシステムを動かす
 - [ex13](ex13/) ボードを読むシステム(DAQ-Middleware使用)を動かしてみる(Reader - Logger)
 - [ex14](ex14/) ボードを読んでモニターするシステムをDAQ-Middlewareで作る(Reader - Monitor)
+
+- [supplementary-ex01](supplementary-ex01/) threadの生成と終了
+- [supplementary-ex02](supplementary-ex02/) semaphoreを使ったリングバッファ

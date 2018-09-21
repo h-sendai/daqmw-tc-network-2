@@ -1,25 +1,26 @@
 DAQMW-TC
 ========
 
-[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2016/)
+[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2018/)
 
-2016年10月開催のDAQ-Middlewareトレーニングコース実習用ファイルです。
+2018年10月開催のDAQ-Middlewareトレーニングコースの
+第1日目 ネットワークプログラミングに関する実習用ファイルです。
 トレーニングコース内で実習に入るまえに何をどういう手順で行うのかを説明します。
 
 ![実習システムの様子](http://daqmw.kek.jp/seminar/2014/spartan_and_mac-small.png)
 
 受講者のかたがたは以下のものを用意してください。
 
-- パソコン(Windows Vista/7/8あるいはMacOS X)
+- パソコン(Windows 7/10あるいはMacOS X)
 - 有線LANで接続できるイーサネット(パソコンにLANポートが付いていない場合は
 上の写真のようにUSBイーサネットアダプタを用意のうえ参加してください)
 - LANケーブル
 
 実習に使うボードは主催者側で用意します。
 
-パソコンにはVirtualBoxをインストールして、仮想Scientific Linux 6.5上で
+パソコンにはVirtualBoxをインストールして、仮想Scientific Linux 7上で
 実を行います。
-[セットアップ方法のページ](http://daqmw.kek.jp/seminar/2014/virtualbox/)
+[セットアップ方法のページ](http://daqmw.kek.jp/seminar/2018/virtualbox/)
 を用意してありますのでコース出席前に準備しておいてください。
 
 ファイルの取得
@@ -28,14 +29,14 @@ DAQMW-TC
 ここにあるファイルをダウンロードするにはターミナルを開いて次のコマンドを実行します。
 
     % cd
-    % git clone https://github.com/h-sendai/daqmw-tc.git
+    % git clone https://github.com/h-sendai/daqmw-tc-network.git
 
 パーセント記号(%)はコマンドラインのプロンプトで入力する必要は
 ありません。最初のcdコマンドはホームディレクトリに移動するために
 行っています。
 
-ダウンロードするとホームディレクトリにdaqmw-tcというディレクトリができます。
-この文書ではこのディレクトリを ~/daqmw-tcと書きます。
+ダウンロードするとホームディレクトリにdaqmw-tc-networkというディレクトリができます。
+この文書ではこのディレクトリを ~/daqmw-tc-networkと書きます。
 その中には以下のディレクトリ(複数)ができます。
 
 [ex](ex/)

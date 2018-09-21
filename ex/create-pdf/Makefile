@@ -1,6 +1,6 @@
-all: daqmw-tc-ex.pdf
+all: daqmw-tc-network-ex.pdf
 
-daqmw-tc-ex.pdf:
+daqmw-tc-network-ex.pdf:
 	./go.zsh
 
 clean:

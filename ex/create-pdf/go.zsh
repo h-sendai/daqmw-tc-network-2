@@ -52,5 +52,5 @@ for i in {01..$last_ex}; do
     done
 done
 
-platex daqmw-tc-ex
-dvipdfmx daqmw-tc-ex
+platex daqmw-tc-network-ex
+dvipdfmx daqmw-tc-network-ex

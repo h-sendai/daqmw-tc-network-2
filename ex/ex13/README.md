@@ -21,7 +21,7 @@ Readerはすでにdaqmw/RawDataReader/ディレクトリにあるのでこれを
     % cd
     % mkdir RawData (ホームディレクトリにRawDataディレクトリを作成。作るシステムはこの下にいれる)
     % cd RawData
-    % cp -r ~/daqmw-tc/daqmw/RawDataReader .
+    % cp -r ~/daqmw-tc-network/daqmw/RawDataReader .
     % cd RawDataReader
     % make
 
@@ -67,7 +67,7 @@ sedコマンドを使ったスクリプトを用意したのでこれを使う(�
     % cp -r /usr/share/daqmw/examples/SampleLogger .
     % mv SampleLogger RawDataLogger (ディレクトリ名の書き換え)
     % cd RawDataLogger
-    % cp ~/daqmw-tc/daqmw/utils/change-SampleLogger-name.sh .
+    % cp ~/daqmw-tc-network/daqmw/utils/change-SampleLogger-name.sh .
     % chmod +x change-SampleLogger-name.sh
     (change-SampleLogger-name.shのなかみを見てみる)
     (RawDataLoggerではない名前に変更する場合はnew_name_camel_caseを変更する)
@@ -81,10 +81,10 @@ sedコマンドを使ったスクリプトを用意したのでこれを使う(�
 ---------------------------------------
 
 コンフィギュレーションファイルを作る。ほぼ完成された雛型を
-~/daqmw-tc/daqmw/reader-logger.xmlに用意してあるのでそれを編集して使う。
+~/daqmw-tc-network/daqmw/reader-logger.xmlに用意してあるのでそれを編集して使う。
 
     % cd ~/RawData
-    % cp ~/daqmw-tc/daqmw/reader-logger.xml .
+    % cp ~/daqmw-tc-network/daqmw/reader-logger.xml .
     % reader-logger.xmlのexecPathを自分の環境にあわせて編集
 
 4. システム起動、ラン
@@ -97,7 +97,7 @@ sedコマンドを使ったスクリプトを用意したのでこれを使う(�
 5. trigger.pyでボードにトリガーを送る
 -------------------------------------
 
-    % ~/daqmw-tc/trigger/trigger.py
+    % ~/daqmw-tc-network/trigger/trigger.py
 
 としてstartボタンを押しトリガーを送る。読みだしシステムのイベントバイト数が
 増えるのを確認する。

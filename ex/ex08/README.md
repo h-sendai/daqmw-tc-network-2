@@ -21,7 +21,7 @@
 解答例
 ------
 
-プログラム例は ~/daqmw-tc/bs/read_file_decode_graph にある
+プログラム例は ~/daqmw-tc-network/bs/read_file_decode_graph にある
 (これはチャンネル0だけをグラフ化している)。
 
 

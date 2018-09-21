@@ -40,7 +40,7 @@ SampleMonitorコンポーネントはDAQ-Middlewareをセットすると
 前回同様コンポーネント名をRawDataMonitorに変更する作業を行う。
 
     % make clean
-    % cp ~/daqmw-tc/daqmw/utils/change-SampleMonitor-name.sh .
+    % cp ~/daqmw-tc-network/daqmw/utils/change-SampleMonitor-name.sh .
     % sh change-SampleMonitor-name.sh
     % cd ..
     % mv SampleMonitor RawDataMonitor
@@ -153,10 +153,10 @@ deleteする(daq_start()でnewしていたのでdeleteしないと多数回start
 ---------------------------------------
 
 コンフィギュレーションファイルを作る。ほぼ完成された雛型を
-~/daqmw-tc/daqmw/reader-monitor.xmlに用意してあるのでそれを編集して使う。
+~/daqmw-tc-network/daqmw/reader-monitor.xmlに用意してあるのでそれを編集して使う。
 
     % cd ~/RawData
-    % cp ~/daqmw-tc/daqmw/reader-monitor.xml .
+    % cp ~/daqmw-tc-network/daqmw/reader-monitor.xml .
     % reader-monitor.xmlのexecPathを自分の環境にあわせて編集
 
 
@@ -170,7 +170,7 @@ deleteする(daq_start()でnewしていたのでdeleteしないと多数回start
 5. trigger.pyでボードにトリガーを送る
 -------------------------------------
 
-    % ~/daqmw-tc/trigger/trigger.py
+    % ~/daqmw-tc-network/trigger/trigger.py
 
 としてstartボタンを押しトリガーを送る。読みだしシステムのイベントバイト数が
 増えるのを確認する。
@@ -199,5 +199,5 @@ trigger GUIのstopボタンを押しトリガーを送るのを停止する。
     % make
 
 4個のDAQコンポーネントを使う場合のコンフィギュレーションファイルは
-~/daqmw-tc/daqmw/4comps.xml にあるのでコピーして変更して使う。
+~/daqmw-tc-network/daqmw/4comps.xml にあるのでコピーして変更して使う。
 

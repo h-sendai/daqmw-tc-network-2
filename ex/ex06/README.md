@@ -15,10 +15,10 @@
 ------------------
 
 まずデータフォーマットをしらなければならない。
-データフォーマットは ~/daqmw-tc/doc/raw-data-packet-format.pdf にある。
+データフォーマットは ~/daqmw-tc-network/doc/raw-data-packet-format.pdf にある。
 Linux上でPDFファイルを読むにはevinceプログラムを使う:
 
-    % evince ~/daqmw-tc/doc/raw-data-packet-format.pdf
+    % evince ~/daqmw-tc-network/doc/raw-data-packet-format.pdf
 
 ヘッダ部と、データ部にわかれている。
 ヘッダ部の長さは12バイトで固定である。このなかに次に続くデータ部の
@@ -52,20 +52,20 @@ word lengthとチャンネル数とデータ長から、何ウインドウ分の
 行う作業内容
 ------------
 
-プログラムは ~/daqmw-tc/bs/read_file_decode/ にあるのでこれをコピーして
+プログラムは ~/daqmw-tc-network/bs/read_file_decode/ にあるのでこれをコピーして
 使う:
 
-    % cd ~/daqmw-tc/sandbox
+    % cd ~/daqmw-tc-network/sandbox
     % cp -r ../ex/ex5 .
 
 デコード部分のメソッドが書いてないのでこれを埋めること。
 
-サンプルデータは ~/daqmw-tc/bs/sample.dat にある。
+サンプルデータは ~/daqmw-tc-network/bs/sample.dat にある。
 このファイルのデータ部をデコードして
 
     trg: XXX ch: XXX window: XXX data: XXX
 
-と並べたものを ~/daqmw-tc/bs/ascii.sample としておいてあるので
+と並べたものを ~/daqmw-tc-network/bs/ascii.sample としておいてあるので
 自分で書いたプログラムでOKかどうかはこれと同じフォーマットで
 出力するようにして比較することで可能である。
 比較にはたとえばdiffプログラムを使うと機械的にできる。
@@ -102,4 +102,4 @@ get_window_size()はデータ長/(ワードサイズ*チャンネル数)で求�
 解答例
 ------
 
-各メソッドを実装したものを ~/daqmw-tc/bs/read_file_decode/ においてある。
+各メソッドを実装したものを ~/daqmw-tc-network/bs/read_file_decode/ においてある。

@@ -33,7 +33,7 @@ TCPで送られてくるデータはLinux上でncコマンドで読むことが
 
 トリガーをかけるために
 
-    % ~/daqmw-tc/trigger/trigger.py
+    % ~/daqmw-tc-network/trigger/trigger.py
 
 を起動する。startボタンを押すとUDPパケットが送られ、トリガーがかかる
 (トリガーレートのデフォルトは10Hzにセットされている)。

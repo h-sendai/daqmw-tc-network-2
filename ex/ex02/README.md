@@ -18,7 +18,7 @@ main.cppに書いてある(かならずmain.cppというファイル名で
 
 ファイルをコピーしてmakeで実行ファイルを作る:
 
-    % cd ~/daqmw-tc/sandbox
+    % cd ~/daqmw-tc-network/sandbox
     % cp -r ../ex02 .
     % make
 

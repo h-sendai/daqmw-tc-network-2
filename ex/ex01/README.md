@@ -6,7 +6,7 @@
 
 ファイルをsandbox以下にコピーしてmakeを実行し、実行ファイルを作成します。
 
-    % cd ~/daqmw-tc/sandbox
+    % cd ~/daqmw-tc-network/sandbox
     % cp -r ../ex/ex01 . (最後にカレントディレクトリを示すドット(.)があることに注意)
     % cd ex01
     % make

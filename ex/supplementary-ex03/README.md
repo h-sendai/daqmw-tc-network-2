@@ -9,8 +9,8 @@ semaphoreを使った同期を試します。
 ファイルをsandbox以下にコピーしてmakeを実行し、実行ファイルを作成します。
 
     % cd ~/daqmw-tc-network/sandbox
-    % cp -r ../ex/supplement-ex02 . (最後にカレントディレクトリを示すドット(.)があることに注意)
-    % cd supplement-ex02
+    % cp -r ../ex/supplement-ex03 . (最後にカレントディレクトリを示すドット(.)があることに注意)
+    % cd supplement-ex03
     % make
     % ./sem
 

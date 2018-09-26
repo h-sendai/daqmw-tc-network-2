@@ -45,11 +45,16 @@ basicディレクトリのMakefile
     clean:
     <TAB>rm -f sample *.o
 
-- CC = g++ (マクロ。以降の行で$(CC)として使える)
-- all: sample (最終生成物をallターゲットとして指定。make allとするとここで指定したものを作るように動作する)
-- sample: sample.o world.o (sampleという実行ファイルはsample.o、world.oに依存する。sample.oあるいはworld.oがsampleより新しければ次の行に書いたコマンドを実行しsampleを作る)
-- sample.o: sample.cpp (sample.oはsample.cppに依存する。sample.cppがsample.oより新しければ次の行を実行してsample.oを作る)
-- world.o: world.cpp world.h (sample.oと同様。c++ではあworld.hのような.hファイルに実装をいれることがあるのでここではworld.hにも依存すると指定してある)。
+- CC = g++
+    - マクロ。以降の行で$(CC)として使える
+- all: sample
+    - 最終生成物をallターゲットとして指定。make allとするとここで指定したものを作るように動作する
+- sample: sample.o world.o
+    - sampleという実行ファイルはsample.o、world.oに依存する。sample.oあるいはworld.oがsampleより新しければ次の行に書いたコマンドを実行しsampleを作る
+- sample.o: sample.cpp
+    - sample.oはsample.cppに依存する。sample.cppがsample.oより新しければ次の行を実行してsample.oを作る
+- world.o: world.cpp world.h
+    - sample.oと同様。c++ではあworld.hのような.hファイルに実装をいれることがあるのでここではworld.hにも依存すると指定してある
 
 ファイルタイムスタンプでの動作の確認
 ------------------------------------

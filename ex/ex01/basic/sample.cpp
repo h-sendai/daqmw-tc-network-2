@@ -1,8 +1,4 @@
-#include <cstdio>
-#include <fstream>
 #include <iostream>
-#include <vector>
-
 #include "world.h"
 
 using namespace std;

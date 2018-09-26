@@ -1,5 +1,3 @@
-#include <cstdio>
-#include <fstream>
 #include <iostream>
 
 using namespace std;

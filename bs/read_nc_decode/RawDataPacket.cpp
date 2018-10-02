@@ -67,7 +67,6 @@ int RawDataPacket::get_num_of_ch()
 
 unsigned int RawDataPacket::get_data_at(int ch, int window)
 {
-    // XXX: Assume the word size is 16 bit
     unsigned short *data;
 
     int word_size = get_word_size();

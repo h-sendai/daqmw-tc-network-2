@@ -1,9 +1,9 @@
 DAQMW-TC
 ========
 
-[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2018/)
+[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2019/)
 
-2018年10月開催のDAQ-Middlewareトレーニングコースの
+2019年9月開催のDAQ-Middlewareトレーニングコースの
 第1日目 ネットワークプログラミングに関する実習用ファイルです。
 トレーニングコース内で実習に入るまえに何をどういう手順で行うのかを説明します。
 
@@ -20,7 +20,7 @@ DAQMW-TC
 
 パソコンにはVirtualBoxをインストールして、仮想Scientific Linux 7上で
 実を行います。
-[セットアップ方法のページ](http://daqmw.kek.jp/seminar/2018/virtualbox/)
+[セットアップ方法のページ](http://daqmw.kek.jp/seminar/2019/virtualbox/)
 を用意してありますのでコース出席前に準備しておいてください。
 
 ファイルの取得

@@ -1,6 +1,7 @@
 *.[oa]
 .depend
 autogen
+a.out
 Dispatcher/DispatcherComp
 RawDataLogger/RawDataLoggerComp
 RawDataMonitor/RawDataMonitorComp

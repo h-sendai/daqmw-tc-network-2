@@ -3,7 +3,6 @@
 
 ローデータをデコードできるようにする。
 
-
 実習内容
 --------
 
@@ -15,30 +14,23 @@
 ------------------
 
 まずデータフォーマットをしらなければならない。
-データフォーマットは ~/daqmw-tc-network/doc/raw-data-packet-format.pdf にある。
+データフォーマットは ~/daqmw-tc-network-2/doc/data-format.pdf にある。
 Linux上でPDFファイルを読むにはevinceプログラムを使う:
 
-    % evince ~/daqmw-tc-network/doc/raw-data-packet-format.pdf
+    % evince ~/daqmw-tc-network/doc/data-format.pdf
 
 ヘッダ部と、データ部にわかれている。
-ヘッダ部の長さは12バイトで固定である。このなかに次に続くデータ部の
-長さが書いてある(バイトを単位)。その他ヘッダには
+ヘッダ部の長さは12バイトで固定である。
 
-* データタイプ(0xf) (他のデータパケットと見分けるのが目的)
-* Word length (2) (1トリガ1チャンネル1ウインドウデータのバイトサイズ)
-* number of Ch (16) (チャンネル数)
-* データ長
-* トリガーカウント (0が最初。トリガーがかかるごとに1づつ増える)
+- Magic Word (0x12345678) デコードする際にこの値になっていなければどこかで
+おかしなことになっていたことがわかる。
+- Data Length データ部分の長さ。単位はバイト。ヘッダの長さはこのフォーマットでは
+入っていない(ヘッダの長さを含める流儀もある)
+- トリガーカウント 最初は0。トリガーがかかるごとに1づつ増える(という想定)
 
-の情報が入っている。複数バイトで構成される数値はいずれも
-ネットワークバイトオーダになっているので、PCで扱うには変換が必要になる。
-
-word lengthとチャンネル数とデータ長から、何ウインドウ分のデータが
-入っているのかがわかる:
-
-     ウインドウ数 = データ長 / ((word length)*(チャンネル数))
-
-データの部分は16ビットであるが、上位4ビットはチャンネル番号を表す。
+次にデータ部が続く。
+データの部分は1チャンネル、1サンプルあたり16ビットである。
+上位4ビットはチャンネル番号を表す。
 のこり12ビットがデータとなる。
 
      15             8|7             0
@@ -49,30 +41,26 @@ word lengthとチャンネル数とデータ長から、何ウインドウ分の
      <-------><---------------------->
        CH #         ADC  Data
 
+今回エミュレータが送ってくるデータは各チャンネル1024サンプルである。
+データ数が変わる場合はヘッダのData Lengthから計算で求めたりする。
+
 行う作業内容
 ------------
 
-プログラムは ~/daqmw-tc-network/bs/read_file_decode/ にあるのでこれをコピーして
+プログラムは ~/daqmw-tc-network-2/bs/read_file_decode/ にあるのでこれをコピーして
 使う:
 
-    % cd ~/daqmw-tc-network/sandbox
-    % cp -r ../ex/ex5 .
+    % cd ~/daqmw-tc-network-2/sandbox
+    % cp -r ../bs/read_file_decode .
 
 デコード部分のメソッドが書いてないのでこれを埋めること。
 
-サンプルデータは ~/daqmw-tc-network/bs/sample.dat にある。
+サンプルデータは ~/daqmw-tc-network-2/bs/sample.dat にある。
 このファイルのデータ部をデコードして
 
-    trg: XXX ch: XXX window: XXX data: XXX
+    trg: XXX ch: XXX sample: XXX data: XXX
 
-と並べたものを ~/daqmw-tc-network/bs/ascii.sample としておいてあるので
-自分で書いたプログラムでOKかどうかはこれと同じフォーマットで
-出力するようにして比較することで可能である。
-比較にはたとえばdiffプログラムを使うと機械的にできる。
-
-    % diff -u file_a file_b
-
-違いがなければなにも出力されない。
+と表示するプログラムを書く。
 
 ファイル
 
@@ -83,13 +71,15 @@ word lengthとチャンネル数とデータ長から、何ウインドウ分の
 
 実装するメソッド(ヘッダデータを読むところ)
 
-* is_raw_data_packet()
-* get_word_size()
+* is_valid_magic()
+* is_valid_footer()
 * get_data_length()
-* get_num_of_ch()
 * get_window_size()
 
-get_window_size()はデータ長/(ワードサイズ*チャンネル数)で求めたwindow数を返すこと。
+* get_word_size(): 1データサイズ。今回は2バイト固定なので常に2を返すようにしてある。
+データフォーマットによりこの情報もヘッダに含まれていることがある。
+* get_num_of_ch(): チャンネル数。今回は4チャンネルなので常に4を返すようにしてある。
+データフォーマットによりこの情報もヘッダに含まれていることがある。
 
 データ部を読むところ
 
@@ -102,4 +92,4 @@ get_window_size()はデータ長/(ワードサイズ*チャンネル数)で求�
 解答例
 ------
 
-各メソッドを実装したものを ~/daqmw-tc-network/bs/read_file_decode/ においてある。
+各メソッドを実装したものを ~/daqmw-tc-network-2/bs/read_file_decode/ においてある。

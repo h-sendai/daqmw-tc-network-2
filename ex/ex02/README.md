@@ -101,4 +101,6 @@ Makefile中には複数のターゲットを書くことができる。引数な
 あるいはWeb上で http://www.gnu.org/software/make/manual/make.html から
 参照できる。
 
+---
 
+[ex03](../ex03/)

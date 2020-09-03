@@ -103,3 +103,6 @@ basicディレクトリのMakefile
     clean:
         rm -f *.o $(PROG)
 
+---
+
+[ex02](../ex02/)

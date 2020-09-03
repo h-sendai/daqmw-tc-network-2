@@ -23,6 +23,17 @@
 ありません。最初のcdコマンドはホームディレクトリに移動するために
 行っています。
 
+次のように"Resolving deltas: 100% (NNN/NNN), done." (NNNには数値が入る)
+とでたら正常に取得できています。
+
+    Cloning into 'daqmw-tc-network-2'...
+    remote: Enumerating objects: 1112, done.
+    remote: Counting objects: 100% (1112/1112), done.
+    remote: Compressing objects: 100% (422/422), done.
+    remote: Total 1112 (delta 616), reused 1110 (delta 614), pack-reused 0
+    Receiving objects: 100% (1112/1112), 1.43 MiB | 1.59 MiB/s, done.
+    Resolving deltas: 100% (616/616), done.
+
 ダウンロードするとホームディレクトリにdaqmw-tc-network-2というディレクトリができます。
 この文書ではこのディレクトリを ~/daqmw-tc-network-2と書きます。
 その中には以下のディレクトリ(複数)ができます。

@@ -49,15 +49,11 @@ int main(int argc, char *argv[])
     graph->SetMinimum(0.0);
     graph->SetMaximum(150.0);
 
-    /* work around on VirtualBox GUI */
-    usleep(100000);
-    /* end of work around on VirtualBox GUI */
-
     graph->Draw("al*");
     text -> DrawText(0.7, 0.92, Form("Trigger: %d", 100));
     c1->Update();
 
-    sleep(5);
-    // theApp.Run();
+    //sleep(5);
+    theApp.Run();
     return 0;
 }

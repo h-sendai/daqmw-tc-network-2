@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     }
 
     for ( ; ; ) {
-        // Read Header Part
+        ////////// Read Header Part //////////
         n = fread(buf, 1, RawDataPacket::HEADER_SIZE, fp);
         if (n == 0) {
             if (feof(fp)) {
@@ -49,9 +49,9 @@ int main(int argc, char *argv[])
 
         // Set header part to decode
         r.set_buf(buf, n);
-        // Decode.  Verify Type
-        if (! r.is_raw_data_packet()) {
-            cout << "Not a RawDataPacket" << endl;
+        // Decode.  Verify magic
+        if (! r.is_valid_magic()) {
+            cout << "Not a RawDataPacket. invalid magic" << endl;
             exit(1);
         }
 
@@ -59,8 +59,8 @@ int main(int argc, char *argv[])
         int data_length   = r.get_data_length();
         //cout << "data_length:   " << data_length   << endl;
 
-        // Read Data Part
-        n = fread(&buf[RawDataPacket::HEADER_SIZE], 1, data_length, fp);
+        ////////// Read Data Part + Footer //////////
+        n = fread(&buf[RawDataPacket::HEADER_SIZE], 1, data_length + RawDataPacket::FOOTER_SIZE, fp);
         if (n == 0) {
             if (feof(fp)) {
                 break;;
@@ -69,17 +69,15 @@ int main(int argc, char *argv[])
                 exit(0);
             }
         }
-        else if (n != data_length) {
+        else if (n != (data_length + RawDataPacket::FOOTER_SIZE)) {
             errx(1, "partial read %d bytes.  Should be %d bytes", n, data_length);
         }
             
         // Get window size, trigger count, number of channels
+        // window_size: number of sample per one channel
         int window_size   = r.get_window_size();
-        int trigger_count = r.get_trigger_count();
         int n_ch          = r.get_num_of_ch();
-        
-        //cout << "window_size:   " << window_size   << endl;
-        //cout << "trigger_count: " << trigger_count << endl;
+        int trigger_count = r.get_trigger_count();
         
         // Decode data
         for (int ch = 0; ch < n_ch; ch ++) {
@@ -91,6 +89,11 @@ int main(int argc, char *argv[])
                 cout << " data: "   << data;
                 cout << endl;
             }
+        }
+
+        if (! r.is_valid_footer()) {
+            cout << "Not a RawDataPacket. invalid footer" << endl;
+            exit(1);
         }
         r.reset_buf();
     }

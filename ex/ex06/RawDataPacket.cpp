@@ -2,12 +2,12 @@
 
 RawDataPacket::RawDataPacket(): m_buf(NULL), m_buf_len(-1)
 {
-// no code required.  leave this method empty
+
 }
 
 RawDataPacket::~RawDataPacket()
 {
-// no code required.  leave this method empty
+
 }
 
 int RawDataPacket::set_buf(const unsigned char *buf, const int buf_len)
@@ -18,14 +18,19 @@ int RawDataPacket::set_buf(const unsigned char *buf, const int buf_len)
     return 0;
 }
 
-bool RawDataPacket::is_raw_data_packet()
+bool RawDataPacket::is_valid_magic()
+{
+    // write this method
+}
+
+bool RawDataPacket::is_valid_footer()
 {
     // write this method
 }
 
 int RawDataPacket::get_word_size()
 {
-    // write this method
+    return 2;
 }
 
 int RawDataPacket::get_data_length()
@@ -40,7 +45,7 @@ int RawDataPacket::get_trigger_count()
 
 int RawDataPacket::get_num_of_ch()
 {
-    // write this method
+    return 4;
 }
 
 unsigned int RawDataPacket::get_data_at(int ch, int window)
@@ -50,7 +55,13 @@ unsigned int RawDataPacket::get_data_at(int ch, int window)
 
 int RawDataPacket::get_window_size()
 {
-    // write this method
+    int word_size = 2;
+    int n_ch      = 4;
+    int data_length = get_data_length();
+
+    int window_size = data_length / (word_size*n_ch);
+
+    return window_size;
 }
 
 int RawDataPacket::reset_buf()

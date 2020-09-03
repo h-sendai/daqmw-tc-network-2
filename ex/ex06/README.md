@@ -74,7 +74,7 @@ Linux上でPDFファイルを読むにはevinceプログラムを使う:
 * is_valid_magic()
 * is_valid_footer()
 * get_data_length()
-* get_window_size()
+* get_trigger_count()
 
 * get_word_size(): 1データサイズ。今回は2バイト固定なので常に2を返すようにしてある。
 データフォーマットによりこの情報もヘッダに含まれていることがある。

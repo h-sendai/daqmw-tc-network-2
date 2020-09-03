@@ -17,7 +17,7 @@
 データフォーマットは ~/daqmw-tc-network-2/doc/data-format.pdf にある。
 Linux上でPDFファイルを読むにはevinceプログラムを使う:
 
-    % evince ~/daqmw-tc-network/doc/data-format.pdf
+    % evince ~/daqmw-tc-network-2/doc/data-format.pdf
 
 ヘッダ部と、データ部にわかれている。
 ヘッダ部の長さは12バイトで固定である。

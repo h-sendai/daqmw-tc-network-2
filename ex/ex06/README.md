@@ -93,3 +93,7 @@ Linux上でPDFファイルを読むにはevinceプログラムを使う:
 ------
 
 各メソッドを実装したものを ~/daqmw-tc-network-2/bs/read_file_decode/ においてある。
+
+---
+
+[ex07](../ex07/)

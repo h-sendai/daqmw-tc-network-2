@@ -8,7 +8,7 @@ pthread_create(), pthread_join()でthreadの生成、終了を実習します。
 
 ファイルをsandbox以下にコピーしてmakeを実行し、実行ファイルを作成します。
 
-    % cd ~/daqmw-tc-network/sandbox
+    % cd ~/daqmw-tc-network-2/sandbox
     % cp -r ../ex/supplement-ex01 . (最後にカレントディレクトリを示すドット(.)があることに注意)
     % cd supplement-ex01
     % make

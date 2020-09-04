@@ -141,6 +141,11 @@ ncコマンドを使って実際にエミュレータからデータを読んで
 
 各メソッドを実装したものを ~/daqmw-tc-network-2/bs/read_file_decode/ においてある。
 
+図
+--------
+
+![read-data.png](read-data.png)
+
 ---
 
 [ex07](../ex07/)

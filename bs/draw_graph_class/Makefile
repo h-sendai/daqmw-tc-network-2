@@ -28,7 +28,7 @@ CPPFLAGS += -I$(shell ${ROOTSYS}/bin/root-config --incdir)
 LDLIBS   += $(shell ${ROOTSYS}/bin/root-config --libs)
 
 CC = g++
-PROG = sample
+PROG = draw-graph-class
 CXXFLAGS += -g -O2 -Wall
 # LDLIBS += -L/usr/local/lib -lmylib
 # LDLIBS += -lrt

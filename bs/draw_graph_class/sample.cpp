@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     }
     g0->set_min_max(0, 100); /*graph y range */
 
-    g0->set_title(Form("Channel %d", 1));
+    g1->set_title(Form("Channel %d", 1));
     for (int i = 0; i < 5; ++i) {
         g1->fill(i, 2*i*i);
     }

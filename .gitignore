@@ -12,6 +12,7 @@ omninames-colors.kek.jp.log
 rtc.conf
 rtc*.log
 bs/draw_graph/draw_graph
+bs/draw_graph_class/draw-graph-class
 bs/read_file_decode/read_file_decode
 bs/read_file_decode_graph/read_file_decode_graph
 bs/read_nc_decode/read_nc_decode

@@ -27,6 +27,15 @@ ROOTではC++プログラムをコンパイルするのに必要なインクル�
     CPPFLAGS += -I$(shell ${ROOTSYS}/bin/root-config --incdir)
     LDLIBS   += $(shell ${ROOTSYS}/bin/root-config --glibs)
 
+グラフのクラス化
+----------------
+
+グラフオブジェクトの部分をクラス化したものを
+~/daqmw-tc-network-2/bs/draw_graph_class においてある。
+グラフデータのx, y座標値をvectorで保持するように変更してある。
+ついでにROOT Canvasを4つに分割し、そのうちの2つにグラフを
+書くようにした。
+
 ---
 
 [ex08](../ex08/)

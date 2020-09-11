@@ -20,8 +20,8 @@ endif
 
 CC = g++
 PROG = draw_graph
-CXXFLAGS = -g -O2 -Wall
-CPPFLAGS += -I$(shell ${ROOTSYS}/bin/root-config --incdir)
+CXXFLAGS += -g -O2 -Wall
+CXXFLAGS += $(shell ${ROOTSYS}/bin/root-config --cflags)
 LDLIBS   += $(shell ${ROOTSYS}/bin/root-config --glibs)
 
 # LDLIBS += -L/usr/local/lib/ -lmylib

@@ -16,20 +16,12 @@ Please install ROOT program.\
 Consult at http://root.cern.ch to install ROOT)
 endif
 
-ROOT_VERSION = $(shell ${ROOTSYS}/bin/root-config --version | sed -e 's/\..*//')
-EL_VERSION   = $(shell lsb_release -sr | sed -e 's/\..*//')
-ifeq ($(strip $(EL_VERSION)), 7)
-ifeq ($(strip $(ROOT_VERSION)),6)
-CXXFLAGS += -std=gnu++11
-endif
-endif
-
-CPPFLAGS += -I$(shell ${ROOTSYS}/bin/root-config --incdir)
-LDLIBS   += $(shell ${ROOTSYS}/bin/root-config --libs)
 
 CC = g++
 PROG = draw-graph-class
 CXXFLAGS += -g -O2 -Wall
+CXXFLAGS += $(shell ${ROOTSYS}/bin/root-config --cflags)
+LDLIBS   += $(shell ${ROOTSYS}/bin/root-config --libs)
 # LDLIBS += -L/usr/local/lib -lmylib
 # LDLIBS += -lrt
 # LDFLAGS += -pthread

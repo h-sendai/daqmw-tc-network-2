@@ -1,7 +1,7 @@
 CC = g++
 PROG = read_file_decode_graph
-CXXFLAGS = -g -O2 -Wall
-CPPFLAGS += -I$(shell ${ROOTSYS}/bin/root-config --incdir)
+CXXFLAGS += -g -O2 -Wall
+CXXFLAGS += -I$(shell ${ROOTSYS}/bin/root-config --cflags)
 LDLIBS   += $(shell ${ROOTSYS}/bin/root-config --glibs)
 
 # LDLIBS += -L/usr/local/lib/ -lmylib

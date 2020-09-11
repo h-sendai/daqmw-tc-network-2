@@ -27,6 +27,15 @@ ROOTではC++プログラムをコンパイルするのに必要なインクル�
     CPPFLAGS += -I$(shell ${ROOTSYS}/bin/root-config --incdir)
     LDLIBS   += $(shell ${ROOTSYS}/bin/root-config --glibs)
 
+コード解説
+----------
+
+[L1-4](https://github.com/h-sendai/daqmw-tc-network-2/blob/cdf5ab0eb28fc9d7ec14f9bab2d86c4d7ad22ce0/bs/draw_graph/draw_graph.cpp#L1-L4)
+
+C++の一般的インクルードファイル
+
+[ROOTのインクルードファイル](https://github.com/h-sendai/daqmw-tc-network-2/blob/cdf5ab0eb28fc9d7ec14f9bab2d86c4d7ad22ce0/bs/draw_graph/draw_graph.cpp#L6-L13)
+
 グラフのクラス化
 ----------------
 

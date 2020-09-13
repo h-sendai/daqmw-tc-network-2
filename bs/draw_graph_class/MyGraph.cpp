@@ -2,7 +2,7 @@
 
 using namespace std;
 
-MyGraph::MyGraph(): m_debug(false)
+MyGraph::MyGraph(): m_debug(false), m_graph(0), m_text(0)
 {
 }
 

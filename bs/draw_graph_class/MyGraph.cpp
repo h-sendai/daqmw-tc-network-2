@@ -6,8 +6,15 @@ MyGraph::MyGraph(): m_debug(false)
 {
 }
 
-MyGraph::MyGraph(const MyGraph &rhs): m_x(rhs.m_x), m_y(rhs.m_y)
+MyGraph::MyGraph(const MyGraph &rhs): m_debug(rhs.m_debug), m_x(rhs.m_x), m_y(rhs.m_y)
 {
+    // XXX //
+    if (rhs.m_graph != 0) {
+        m_graph = (TGraph*) (rhs.m_graph)->Clone();
+    }
+    if (rhs.m_text != 0) {
+        m_text = (TText *) rhs.m_text->Clone();
+    }
 }
 
 MyGraph::~MyGraph()

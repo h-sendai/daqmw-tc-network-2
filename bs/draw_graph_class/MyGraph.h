@@ -17,7 +17,8 @@ class MyGraph
 {
 public:
 	MyGraph();
-	MyGraph(const MyGraph &rhs);
+	MyGraph(const MyGraph& rhs);
+    MyGraph& operator =(const MyGraph& rhs);
 	virtual ~MyGraph();
     int set_debug();
     int unset_debug();

@@ -17,6 +17,23 @@ MyGraph::MyGraph(const MyGraph &rhs): m_debug(rhs.m_debug), m_x(rhs.m_x), m_y(rh
     }
 }
 
+MyGraph& MyGraph::operator =(const MyGraph& rhs)
+{
+    // XXX //
+    if (this != &rhs) {
+        m_debug = rhs.m_debug;
+        if (m_graph != 0) {
+            m_graph = (TGraph*) (rhs.m_graph)->Clone();
+        }
+        if (m_text != 0) {
+            m_text = (TText*) (rhs.m_text)->Clone();
+        }
+        m_x = rhs.m_x;
+        m_y = rhs.m_y;
+    }
+    return *this;
+}
+
 MyGraph::~MyGraph()
 {
     delete m_graph;

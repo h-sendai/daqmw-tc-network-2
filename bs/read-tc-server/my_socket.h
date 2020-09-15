@@ -15,7 +15,7 @@
 #include <err.h>
 #include <errno.h>
 #include <fcntl.h>       /* for nonblocking */
-#include <netdb.h>		 /* for getaddrinfo() */
+#include <netdb.h>       /* for getaddrinfo() */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

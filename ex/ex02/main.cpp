@@ -26,5 +26,9 @@ int main(int argc, char *argv[])
     MyClass c(a);
     MyClass d = a;
 
+    cerr << "use assignment operator" << endl;
+    MyClass e;
+    e = a;
+
     return 0;
 }

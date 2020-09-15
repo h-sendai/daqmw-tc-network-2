@@ -12,6 +12,21 @@ MyClass::MyClass(int x, int y): m_x(x), m_y(y)
 	std::cerr << "MyClass ctor(int, int)" << std::endl;
 }
 
+MyClass::MyClass(const MyClass &rhs): m_x(rhs.m_x), m_y(rhs.m_y)
+{
+    std::cerr << "MyClass copy ctor" << std::endl;
+}
+
+MyClass& MyClass::operator =(const MyClass& rhs)
+{
+    std::cerr << "assignment operator" << std::endl;
+    if (this != &rhs) {
+        m_x = rhs.m_x;
+        m_y = rhs.m_y;
+    }
+    return *this;
+}
+
 // Destructor
 MyClass::~MyClass()
 {

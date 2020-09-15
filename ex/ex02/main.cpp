@@ -22,5 +22,9 @@ int main(int argc, char *argv[])
     cerr << "a.m_x: " << x << endl;
     cerr << "a.m_y: " << y << endl;
 
+    cerr << "use copy ctor" << endl;
+    MyClass c(a);
+    MyClass d = a;
+
     return 0;
 }

@@ -8,6 +8,8 @@ class MyClass
 public:
 	MyClass();
 	MyClass(int x, int y);
+    MyClass(const MyClass &rhs); // Copy Constructor
+    MyClass& operator =(const MyClass& a);
 	virtual ~MyClass();
 	int set_x(int x);
 	int set_y(int y);

@@ -6,18 +6,18 @@
 class MyClass
 {
 public:
-	MyClass();
-	MyClass(int x, int y);
+    MyClass();
+    MyClass(int x, int y);
     MyClass(const MyClass &rhs); // Copy Constructor
-    MyClass& operator =(const MyClass& a);
-	virtual ~MyClass();
-	int set_x(int x);
-	int set_y(int y);
-	int get_x();
-	int get_y();
+    MyClass& operator =(const MyClass& a); // assignment operator
+    virtual ~MyClass();
+    int set_x(int x);
+    int set_y(int y);
+    int get_x();
+    int get_y();
 private:
-	int m_x;
-	int m_y;
+    int m_x;
+    int m_y;
 
 };
 

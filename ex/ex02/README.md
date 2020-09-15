@@ -116,6 +116,12 @@ d = a;        // aの値を代入
 MyClass array[5]; // MyClassオブジェクト5個の配列。デフォルトコンストラクタが呼ばれる。
 ```
 
+```
+MyClass(const MyClass &rhs); // Copy Constructor
+MyClass& operator =(const MyClass& a);
+```
+コピーコンストラクタ、代入演算子は書かれていなければコンパイラが自動で作る。
+
 ---
 
 [ex03](../ex03/)

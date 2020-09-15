@@ -5,6 +5,11 @@
 #include "MyClass.h"
 using namespace std;
 
+void my_function(MyClass x)
+{
+    return;
+}
+
 int main(int argc, char *argv[])
 {
     MyClass a;
@@ -32,6 +37,9 @@ int main(int argc, char *argv[])
 
     cerr << "array" << endl;
     MyClass my_array[5];
+
+    cerr << "function call" << endl;
+    my_function(a);
 
     cerr << "program end" << endl;
     return 0;

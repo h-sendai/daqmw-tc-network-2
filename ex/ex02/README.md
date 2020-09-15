@@ -101,6 +101,21 @@ Makefile中には複数のターゲットを書くことができる。引数な
 あるいはWeb上で http://www.gnu.org/software/make/manual/make.html から
 参照できる。
 
+オブジェクトの生成
+------------------
+
+```
+MyClass a; // デフォルトコンストラクタ
+MyClass b(1, 2) // 整数引数2個のコンストラクタ
+
+MyClass c(a); // MyClassオブジェクトcを作成。aと同じ値に設定
+              // MyClass c = a; と同じ。
+MyClass d;    // デフォルトコンストラクタ
+d = a;        // aの値を代入
+
+MyClass array[5]; // MyClassオブジェクト5個の配列。デフォルトコンストラクタが呼ばれる。
+```
+
 ---
 
 [ex03](../ex03/)

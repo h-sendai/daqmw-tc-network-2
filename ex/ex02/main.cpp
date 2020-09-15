@@ -30,5 +30,9 @@ int main(int argc, char *argv[])
     MyClass e;
     e = a;
 
+    cerr << "array" << endl;
+    MyClass my_array[5];
+
+    cerr << "program end" << endl;
     return 0;
 }

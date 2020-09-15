@@ -16,10 +16,10 @@ using namespace std;
 class MyGraph
 {
 public:
-	MyGraph();
-	MyGraph(const MyGraph& rhs);
+    MyGraph();
+    MyGraph(const MyGraph& rhs);
     MyGraph& operator =(const MyGraph& rhs);
-	virtual ~MyGraph();
+    virtual ~MyGraph();
     int set_debug();
     int unset_debug();
     int init(unsigned int x_size, unsigned int y_size);
@@ -31,8 +31,8 @@ public:
     int dump();
 private:
     bool   m_debug;
-	vector <int> m_x;
-	vector <unsigned short> m_y;
+    vector <int> m_x;
+    vector <unsigned short> m_y;
     // TCanvas *m_c1;
     TGraph  *m_graph;
     TText   *m_text;

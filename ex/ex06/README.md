@@ -93,15 +93,17 @@ ncコマンドを使って実際にエミュレータからデータを読んで
 行う作業内容
 ------------
 
-プログラムは ~/daqmw-tc-network-2/bs/read_file_decode/ にあるのでこれをコピーして
+プログラムは ~/daqmw-tc-network-2/ex/ex06/ にあるのでこれをコピーして
 使う:
 
     % cd ~/daqmw-tc-network-2/sandbox
-    % cp -r ../bs/read_file_decode .
+    % cp ../ex/ex06/* .
 
 デコード部分のメソッドが書いてないのでこれを埋めること。
 
 サンプルデータは ~/daqmw-tc-network-2/bs/sample.dat にある。
+あるいは上でncコマンドを使って取得したファイルが使える。
+
 このファイルのデータ部をデコードして
 
     trg: XXX ch: XXX sample: XXX data: XXX

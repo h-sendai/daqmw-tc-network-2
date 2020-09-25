@@ -50,8 +50,7 @@ Linux上でPDFファイルを読むにはevinceプログラムを使う:
 ncコマンドを使って実際にエミュレータからデータを読んでファイルに
 リダイレクトしてみる:
 
-    % daqmw-tc-emulator
-    別の端末から
+    % daqmw-tc-emulator -D (-Dはデーモン化するオプション)
     % timeout 5 nc localhost 1234 > data
     5秒待つと終了する
 

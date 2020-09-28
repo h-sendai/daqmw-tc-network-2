@@ -62,7 +62,7 @@ public:
     int  reset_buf();
     const static int HEADER_SIZE = 12;
     const static int FOOTER_SIZE = 4;
-    const static int MAGIC_POS  = 0;
+    const static int MAGIC_POS   = 0;
     const static int LENGTH_POS  = 4;
     const static int TRIGGER_POS = 8;
     const static int FOOTER_POS  = 12 + 1024*4*2;

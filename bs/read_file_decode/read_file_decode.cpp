@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         n = fread(buf, 1, RawDataPacket::HEADER_SIZE, fp);
         if (n == 0) {
             if (feof(fp)) {
-                break;;
+                break;
             }
             else if (ferror(fp)) {
                 exit(0);

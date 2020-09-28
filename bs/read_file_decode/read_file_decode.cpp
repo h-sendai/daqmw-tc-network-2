@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
             for (int w = 0; w < window_size; w++) {
                 unsigned short data = r.get_data_at(ch, w);
                 cout << "trg: "     << trigger_count;
-                cout << " ch: "      << ch;
+                cout << " ch: "     << ch;
                 cout << " window: " << w;
                 cout << " data: "   << data;
                 cout << endl;

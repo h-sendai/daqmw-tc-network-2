@@ -32,6 +32,8 @@ int main(int argc, char *argv[])
         err(1, "fopen for %s", filename);
     }
 
+    memset(buf, 0xff, sizeof(buf));
+
     for ( ; ; ) {
         ////////// Read Header Part //////////
         n = fread(buf, 1, RawDataPacket::HEADER_SIZE, fp);

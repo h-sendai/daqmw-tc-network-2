@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
         err(1, "fopen for %s", filename);
     }
 
+    // buf全体を0xffで埋めてバグが検出されやすいようにする。
     memset(buf, 0xff, sizeof(buf));
 
     for ( ; ; ) {

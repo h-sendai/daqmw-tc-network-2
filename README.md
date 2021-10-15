@@ -1,8 +1,8 @@
 # DAQMW-TC
 
-[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2020/)
+[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2021/)
 
-2020年9月30日開催のDAQ-Middlewareトレーニングコースの
+2021年9月21日開催のDAQ-Middlewareトレーニングコースの
 第1日目 ネットワークプログラミングに関する実習用ファイルです。
 トレーニングコース内で実習に入るまえに何をどういう手順で行うのかを説明します。
 
@@ -11,6 +11,8 @@
 - パソコン(Windows 7/10あるいはMacOS X)
 
 パソコンにはVirtualBoxをインストールして、仮想CentOS 7で実習を行います。
+VirtualBoxのセットアップ方法は
+[https://daqmw.kek.jp/virtualbox-centos7/](説明ページ)をご覧ください。
 
 ## ファイルの取得
 

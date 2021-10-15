@@ -12,7 +12,7 @@
 
 パソコンにはVirtualBoxをインストールして、仮想CentOS 7で実習を行います。
 VirtualBoxのセットアップ方法は
-[https://daqmw.kek.jp/virtualbox-centos7/](説明ページ)をご覧ください。
+[説明ページ](https://daqmw.kek.jp/virtualbox-centos7/)をご覧ください。
 
 ## ファイルの取得
 

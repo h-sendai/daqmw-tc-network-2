@@ -60,7 +60,7 @@ xddコマンドで16進数ダンプで表示することができる。
 とすると標準入力を読むようになるのですでに書いたコードを変更し
 試してみる。
 
-~/daqmw-tc-network-2/bs/read_nc_decode/ に解答例がある。
+[../../bs/read_nc_decode](../../bs/read_nc_decode/) に解答例がある。
 
 ---
 

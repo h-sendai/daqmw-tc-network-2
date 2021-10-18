@@ -30,35 +30,6 @@
 
     % make clean
 
-Makefile
---------
-
-Makefileの中身を見ておく。
-
-    CC = g++
-    PROG = sample
-    CXXFLAGS = -g -O2 -Wall
-    # LDLIBS += -L/usr/local/lib/ -lmylib
-    
-    all: $(PROG)
-    
-    clean:
-	rm -f *.o $(PROG)
-
-単一ファイル(この場合はsample.cpp)ならこのくらい書けばよい。
-
-- CCでコンパイラを指定している。
-- CXXFLAGSにはコンパイラ(いまの場合はg++)で使うオプションを指定する。
-ここでは次のように指定している。
-    - -g: デバッグ情報を埋め込む
-    - -O2: レベル2で最適化する。最適化しない場合は-O0を指定する
-    - -Wall: コンパイル時に全ての警告を表示する
-- 実行ファイル(ここではsample)を作るのに外部ライブラリが必要ならLDLIBSで指定する。
-- 単にmakeとするとallターゲットを実行する。
-- make cleanで生成されたファイルを消すようにしている。rmコマンドで消すのと同じだが
-誤ってソースファイルまで消さないようにmake cleanで消すようにMakefileを書いておくのが
-安全。
-
 Cコンパイラの動作
 ----------------
 

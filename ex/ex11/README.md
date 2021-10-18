@@ -27,4 +27,4 @@ ncと同様な動作をするソケットプログラムを書いて
 書きかた例
 ----------
 
-~/daqmw-tc-network-2/bs/read-tc-server にプログラムの例を載せてあります。
+[../../bs/read-tc-server](../../bs/read-tc-server) にプログラムの例を載せてあります。

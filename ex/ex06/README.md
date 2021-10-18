@@ -109,7 +109,7 @@ ncコマンドを使って実際にエミュレータからデータを読んで
 
 デコード部分のメソッドが書いてないのでこれを埋めること。
 
-サンプルデータは ~/daqmw-tc-network-2/bs/sample.dat にある。
+サンプルデータは [../../bs/sample.dat](../../bs/sample.dat) にある。
 あるいは上でncコマンドを使って取得したファイルが使える。
 
 このファイルのデータ部をデコードして
@@ -148,9 +148,9 @@ ncコマンドを使って実際にエミュレータからデータを読んで
 解答例
 ------
 
-各メソッドを実装したものを ~/daqmw-tc-network-2/bs/read_file_decode/ においてある。
-また ~/daqmw-tc-network-2/bs/sample.dat をデコードした結果が
-~/daqmw-tc-network-2/bs/read_file_decode/result においてある。このファイルと
+各メソッドを実装したものを [../../bs/read_file_decode](../../bs/read_file_decode/) においてある。
+また [../../bs/sample.dat](../../bs/sample.dat) をデコードした結果が
+[../../bs/read_file_decode/result](../../bs/read_file_decode/result) においてある。このファイルと
 同じフォーマットで出力するようにプログラムを作るとdiffコマンドで結果を比べることができる。
 
 図

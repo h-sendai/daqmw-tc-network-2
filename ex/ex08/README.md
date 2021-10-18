@@ -21,7 +21,7 @@
 解答例
 ------
 
-プログラム例は [../../bs/read_file_decode_graph](../../bs/read_file_decode/graph) にある
+プログラム例は [../../bs/read_file_decode_graph](../../bs/read_file_decode_graph) にある
 (これはチャンネル0だけをグラフ化している)。
 
 ---

@@ -50,6 +50,11 @@ basicディレクトリのMakefile
 
 \<TAB>のところには実際にはタブが入ります。スペースではないので注意。
 
+タブかどうかは``cat -t Makefile``するとわかる（タブは^Iと表示される）。
+viでは``:set list``でわかる。もとに戻すには``:set nolist``。
+emacsでは``M-x whitespace-mode``でタブが``>>``と表示される。もとに戻すには
+再び``M-x whitespace-mode``を実行する。
+
     CC = g++
     all: sample
 

@@ -1,8 +1,8 @@
 # DAQMW-TC
 
-[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2021/)
+[DAQ-Middlewareトレーニングコース時間割など](http://daqmw.kek.jp/seminar/2022/)
 
-2021年9月21日開催のDAQ-Middlewareトレーニングコースの
+2022年9月29日開催のDAQ-Middlewareトレーニングコースの
 第1日目 ネットワークプログラミングに関する実習用ファイルです。
 トレーニングコース内で実習に入るまえに何をどういう手順で行うのかを説明します。
 

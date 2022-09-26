@@ -1,7 +1,21 @@
 # ソフトウェアエミュレータ
 
-実習で使うCentOS 7にはすでに
-/home/daq/bin/daqmw-tc-server
+## ソースコード、コンパイル方法など
+
+ソースコードは
+https://github.com/h-sendai/daqmw-tc-server
+にあります。
+今回のトレーニングコースでは時間の都合で解説はしませんが
+データフォーマットを改造して使うなどのときはこちらを
+利用してください。
+
+    % git clone https://github.com/h-sendai/daqmw-tc-server.git
+    % cd daqmw-tc-server
+    % make
+    % mkdir ~/bin
+    % cp daqmw-tc-server ~/bin
+
+これで/home/daq/bin/daqmw-tc-server
 としてインストールされています。
 
 bashのPATH環境変数には/home/daq/binが入っていますのでコマンドラインから
@@ -38,13 +52,4 @@ trigger 0のとき全部0、trigger 1のとき全部128、trigger 2のとき全�
     % daqmw-tc-server -t sin
 
 位相がだんだんずれていきます。全チャンネル同じデータです。
-
-## ソースコード、コンパイル方法など
-
-ソースコードは
-https://github.com/h-sendai/daqmw-tc-server
-にあります。
-今回のトレーニングコースでは時間の都合で解説はしませんが
-データフォーマットを改造して使うなどのときはこちらを
-利用してください。
 

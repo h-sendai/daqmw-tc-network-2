@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <cstring> /* for memset() */
 
 #include "RawDataPacket.h"
 

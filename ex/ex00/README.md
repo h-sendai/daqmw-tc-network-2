@@ -126,6 +126,8 @@ bashのPATH環境変数には/home/daq/binが入っていますのでコマン�
 
     % daqmw-tc-server -D
     % (すぐに次のプロンプトがでる)。
+    % とめるにはpkill daqmw-tc-server
+    
     % (ポートを起動するには-pオプションを使います)
     % daqmw-tc-server -D -p 1235
 
